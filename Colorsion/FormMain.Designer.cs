@@ -1,6 +1,6 @@
 ﻿namespace Colorsion
 {
-    partial class MainForm
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -614,7 +614,7 @@
             this.PictureBoxColor.TabStop = false;
             this.PictureBoxColor.MouseHover += new System.EventHandler(this.PictureBoxColor_MouseHover);
             // 
-            // MainForm
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -626,7 +626,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "FormMain";
             this.Text = "Colorsion";
             this.groupBoxInput.ResumeLayout(false);
             this.tabControlInput.ResumeLayout(false);
