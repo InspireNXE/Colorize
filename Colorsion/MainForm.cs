@@ -18,7 +18,7 @@ namespace Colorsion
             switch (tabControlInput.SelectedIndex)
             {
                 case 0: // RGBA
-                    Populate(Color.FromArgb((int) NUDInputIntAlpha.Value, (int) NUDInputIntRed.Value, (int) NUDInputIntGreen.Value, (int) NUDInputIntBlue.Value));
+                    Populate(Color.FromArgb((int) NUDInputRGBAAlpha.Value, (int) NUDInputRGBARed.Value, (int) NUDInputRGBAGreen.Value, (int) NUDInputRGBABlue.Value));
                     break;
                 case 1: // Float
                     if (string.IsNullOrEmpty(TBInputFloatAlpha.Text) || string.IsNullOrWhiteSpace(TBInputFloatAlpha.Text)
@@ -31,16 +31,16 @@ namespace Colorsion
 
                     try
                     {
-                        var alpha = float.Parse(TBInputFloatAlpha.Text);
-                        var red = float.Parse(TBInputFloatRed.Text);
-                        var green = float.Parse(TBInputFloatGreen.Text);
-                        var blue = float.Parse(TBInputFloatBlue.Text);
+                        var a = float.Parse(TBInputFloatAlpha.Text);
+                        var r = float.Parse(TBInputFloatRed.Text);
+                        var g = float.Parse(TBInputFloatGreen.Text);
+                        var b = float.Parse(TBInputFloatBlue.Text);
 
-                        Populate(Color.FromArgb((int)(alpha * 255f), (int)(red * 255f), (int)(green * 255f), (int)(blue * 255f)));
+                        Populate(Color.FromArgb((int)(a * 255f), (int)(r * 255f), (int)(g * 255f), (int)(b * 255f)));
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Float values must be between 0 and 1!");
+                        MessageBox.Show("Values must be between 0 and 1!");
                     }
                     break;
                 case 2: // Hex
@@ -56,22 +56,23 @@ namespace Colorsion
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Please enter a valid Hex value");
+                        MessageBox.Show("Invalid Hex value!");
                     }
                     break;
-                case 3: // UInt
-                    if (string.IsNullOrEmpty(TBInputUInt.Text) || string.IsNullOrWhiteSpace(TBInputUInt.Text))
+                case 3: // Int
+                    if (string.IsNullOrEmpty(TBInputInt.Text) || string.IsNullOrWhiteSpace(TBInputInt.Text))
                     {
                         return;
                     }
 
                     try
                     {
-                        Populate(ColorTranslator.FromWin32(int.Parse(TBInputUInt.Text)));
+                        var value = int.Parse(TBInputInt.Text);
+                        Populate(Color.FromArgb(value));
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("UInt value must be between either " + uint.MinValue + " and " + uint.MaxValue + " or " + int.MinValue + " and " + int.MaxValue);
+                        MessageBox.Show("Value must be between " + int.MinValue + " and " + int.MaxValue);
                     }
                     break;
             }
@@ -81,11 +82,11 @@ namespace Colorsion
         {
             PictureBoxColor.BackColor = color;
 
-            // Int Output
-            TBOutputIntAlpha.Text = color.A.ToString();
-            TBOutputIntRed.Text = color.R.ToString();
-            TBOutputIntGreen.Text = color.G.ToString();
-            TBOutputIntBlue.Text = color.B.ToString();
+            // RGBA Output
+            TBOutputRGBAAlpha.Text = color.A.ToString();
+            TBOutputRGBARed.Text = color.R.ToString();
+            TBOutputRGBAGreen.Text = color.G.ToString();
+            TBOutputRGBABlue.Text = color.B.ToString();
 
             // Float Output
             TBOutputFloatAlpha.Text = (color.A / 255f).ToString();
@@ -94,22 +95,36 @@ namespace Colorsion
             TBOutputFloatBlue.Text = (color.B / 255f).ToString();
 
             // Hex Output
-            TBOutputHex.Text = ColorTranslator.ToHtml(color);
+            TBOutputHex.Text = ToHex(color);
 
-            // UInt Output
-            TBOutputUInt.Text = ColorTranslator.ToWin32(color).ToString();
+            // Int Output
+            TBOutputInt.Text = ToInt(color).ToString();
         }
 
         private void PictureBoxColor_MouseHover(object sender, EventArgs e)
         {
             colorToolTip.RemoveAll();
-            colorToolTip.Show(string.Format("Alpha: {0}\nRed: {1}\nGreen: {2}\nBlue: {3}\nUInt: {4}\nHex: {5}",
+            colorToolTip.Show(string.Format("Alpha: {0}\nRed: {1}\nGreen: {2}\nBlue: {3}\nHex: {4}\nInt: {5}",
                                               PictureBoxColor.BackColor.A,
                                               PictureBoxColor.BackColor.R,
                                               PictureBoxColor.BackColor.G,
                                               PictureBoxColor.BackColor.B,
-                                              ColorTranslator.ToWin32(PictureBoxColor.BackColor),
-                                              ColorTranslator.ToHtml(PictureBoxColor.BackColor)), PictureBoxColor);
+                                              ToHex(PictureBoxColor.BackColor),
+                                              ToInt(PictureBoxColor.BackColor)), PictureBoxColor);
+        }
+
+        private static string ToHex(Color color)
+        {
+            return string.Format("#{0}{1}{2}{3}",
+                color.A.ToString("X").Length == 1 ? string.Format("0{0}", color.A.ToString("X")) : color.A.ToString("X"),
+                color.R.ToString("X").Length == 1 ? string.Format("0{0}", color.R.ToString("X")) : color.R.ToString("X"),
+                color.G.ToString("X").Length == 1 ? string.Format("0{0}", color.G.ToString("X")) : color.G.ToString("X"),
+                color.B.ToString("X").Length == 1 ? string.Format("0{0}", color.B.ToString("X")) : color.B.ToString("X"));
+        }
+
+        private static int ToInt(Color color)
+        {
+            return Convert.ToInt32(color.ToArgb());
         }
     }
 }

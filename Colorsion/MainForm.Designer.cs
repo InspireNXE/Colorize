@@ -31,14 +31,14 @@
             this.BTNConvert = new System.Windows.Forms.Button();
             this.groupBoxInput = new System.Windows.Forms.GroupBox();
             this.tabControlInput = new System.Windows.Forms.TabControl();
-            this.tabPageInputInt = new System.Windows.Forms.TabPage();
-            this.NUDInputIntAlpha = new System.Windows.Forms.NumericUpDown();
+            this.tabPageInputRGBA = new System.Windows.Forms.TabPage();
+            this.NUDInputRGBAAlpha = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.NUDInputIntBlue = new System.Windows.Forms.NumericUpDown();
+            this.NUDInputRGBABlue = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.NUDInputIntGreen = new System.Windows.Forms.NumericUpDown();
+            this.NUDInputRGBAGreen = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.NUDInputIntRed = new System.Windows.Forms.NumericUpDown();
+            this.NUDInputRGBARed = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageInputFloat = new System.Windows.Forms.TabPage();
             this.TBInputFloatAlpha = new System.Windows.Forms.TextBox();
@@ -51,15 +51,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tabPageInputHex = new System.Windows.Forms.TabPage();
             this.TBInputHex = new System.Windows.Forms.TextBox();
-            this.tabPageInputUInt = new System.Windows.Forms.TabPage();
-            this.TBInputUInt = new System.Windows.Forms.TextBox();
+            this.tabPageInputInt = new System.Windows.Forms.TabPage();
+            this.TBInputInt = new System.Windows.Forms.TextBox();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
             this.tabControlOutput = new System.Windows.Forms.TabControl();
-            this.tabPageOutputInt = new System.Windows.Forms.TabPage();
-            this.TBOutputIntAlpha = new System.Windows.Forms.TextBox();
-            this.TBOutputIntBlue = new System.Windows.Forms.TextBox();
-            this.TBOutputIntGreen = new System.Windows.Forms.TextBox();
-            this.TBOutputIntRed = new System.Windows.Forms.TextBox();
+            this.tabPageOutputRGBA = new System.Windows.Forms.TabPage();
+            this.TBOutputRGBAAlpha = new System.Windows.Forms.TextBox();
+            this.TBOutputRGBABlue = new System.Windows.Forms.TextBox();
+            this.TBOutputRGBAGreen = new System.Windows.Forms.TextBox();
+            this.TBOutputRGBARed = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -75,25 +75,25 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabPageOutputHex = new System.Windows.Forms.TabPage();
             this.TBOutputHex = new System.Windows.Forms.TextBox();
-            this.tabPageOutputUInt = new System.Windows.Forms.TabPage();
-            this.TBOutputUInt = new System.Windows.Forms.TextBox();
+            this.tabPageOutputInt = new System.Windows.Forms.TabPage();
+            this.TBOutputInt = new System.Windows.Forms.TextBox();
             this.PictureBoxColor = new System.Windows.Forms.PictureBox();
             this.groupBoxInput.SuspendLayout();
             this.tabControlInput.SuspendLayout();
-            this.tabPageInputInt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntAlpha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntBlue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntRed)).BeginInit();
+            this.tabPageInputRGBA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBAAlpha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBABlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBAGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBARed)).BeginInit();
             this.tabPageInputFloat.SuspendLayout();
             this.tabPageInputHex.SuspendLayout();
-            this.tabPageInputUInt.SuspendLayout();
+            this.tabPageInputInt.SuspendLayout();
             this.groupBoxOutput.SuspendLayout();
             this.tabControlOutput.SuspendLayout();
-            this.tabPageOutputInt.SuspendLayout();
+            this.tabPageOutputRGBA.SuspendLayout();
             this.tabPageOutputFloat.SuspendLayout();
             this.tabPageOutputHex.SuspendLayout();
-            this.tabPageOutputUInt.SuspendLayout();
+            this.tabPageOutputInt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxColor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,10 +119,10 @@
             // 
             // tabControlInput
             // 
-            this.tabControlInput.Controls.Add(this.tabPageInputInt);
+            this.tabControlInput.Controls.Add(this.tabPageInputRGBA);
             this.tabControlInput.Controls.Add(this.tabPageInputFloat);
             this.tabControlInput.Controls.Add(this.tabPageInputHex);
-            this.tabControlInput.Controls.Add(this.tabPageInputUInt);
+            this.tabControlInput.Controls.Add(this.tabPageInputInt);
             this.tabControlInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlInput.Location = new System.Drawing.Point(3, 16);
             this.tabControlInput.Name = "tabControlInput";
@@ -130,36 +130,36 @@
             this.tabControlInput.Size = new System.Drawing.Size(178, 136);
             this.tabControlInput.TabIndex = 0;
             // 
-            // tabPageInputInt
+            // tabPageInputRGBA
             // 
-            this.tabPageInputInt.Controls.Add(this.NUDInputIntAlpha);
-            this.tabPageInputInt.Controls.Add(this.label4);
-            this.tabPageInputInt.Controls.Add(this.NUDInputIntBlue);
-            this.tabPageInputInt.Controls.Add(this.label3);
-            this.tabPageInputInt.Controls.Add(this.NUDInputIntGreen);
-            this.tabPageInputInt.Controls.Add(this.label2);
-            this.tabPageInputInt.Controls.Add(this.NUDInputIntRed);
-            this.tabPageInputInt.Controls.Add(this.label1);
-            this.tabPageInputInt.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInputInt.Name = "tabPageInputInt";
-            this.tabPageInputInt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInputInt.Size = new System.Drawing.Size(170, 110);
-            this.tabPageInputInt.TabIndex = 0;
-            this.tabPageInputInt.Text = "RGBA";
-            this.tabPageInputInt.UseVisualStyleBackColor = true;
+            this.tabPageInputRGBA.Controls.Add(this.NUDInputRGBAAlpha);
+            this.tabPageInputRGBA.Controls.Add(this.label4);
+            this.tabPageInputRGBA.Controls.Add(this.NUDInputRGBABlue);
+            this.tabPageInputRGBA.Controls.Add(this.label3);
+            this.tabPageInputRGBA.Controls.Add(this.NUDInputRGBAGreen);
+            this.tabPageInputRGBA.Controls.Add(this.label2);
+            this.tabPageInputRGBA.Controls.Add(this.NUDInputRGBARed);
+            this.tabPageInputRGBA.Controls.Add(this.label1);
+            this.tabPageInputRGBA.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInputRGBA.Name = "tabPageInputRGBA";
+            this.tabPageInputRGBA.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInputRGBA.Size = new System.Drawing.Size(170, 110);
+            this.tabPageInputRGBA.TabIndex = 0;
+            this.tabPageInputRGBA.Text = "RGBA";
+            this.tabPageInputRGBA.UseVisualStyleBackColor = true;
             // 
-            // NUDInputIntAlpha
+            // NUDInputRGBAAlpha
             // 
-            this.NUDInputIntAlpha.Location = new System.Drawing.Point(112, 84);
-            this.NUDInputIntAlpha.Maximum = new decimal(new int[] {
+            this.NUDInputRGBAAlpha.Location = new System.Drawing.Point(112, 84);
+            this.NUDInputRGBAAlpha.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NUDInputIntAlpha.Name = "NUDInputIntAlpha";
-            this.NUDInputIntAlpha.Size = new System.Drawing.Size(52, 20);
-            this.NUDInputIntAlpha.TabIndex = 4;
-            this.NUDInputIntAlpha.Value = new decimal(new int[] {
+            this.NUDInputRGBAAlpha.Name = "NUDInputRGBAAlpha";
+            this.NUDInputRGBAAlpha.Size = new System.Drawing.Size(52, 20);
+            this.NUDInputRGBAAlpha.TabIndex = 4;
+            this.NUDInputRGBAAlpha.Value = new decimal(new int[] {
             255,
             0,
             0,
@@ -175,17 +175,17 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Alpha";
             // 
-            // NUDInputIntBlue
+            // NUDInputRGBABlue
             // 
-            this.NUDInputIntBlue.Location = new System.Drawing.Point(112, 58);
-            this.NUDInputIntBlue.Maximum = new decimal(new int[] {
+            this.NUDInputRGBABlue.Location = new System.Drawing.Point(112, 58);
+            this.NUDInputRGBABlue.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NUDInputIntBlue.Name = "NUDInputIntBlue";
-            this.NUDInputIntBlue.Size = new System.Drawing.Size(52, 20);
-            this.NUDInputIntBlue.TabIndex = 3;
+            this.NUDInputRGBABlue.Name = "NUDInputRGBABlue";
+            this.NUDInputRGBABlue.Size = new System.Drawing.Size(52, 20);
+            this.NUDInputRGBABlue.TabIndex = 3;
             // 
             // label3
             // 
@@ -197,17 +197,17 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Blue";
             // 
-            // NUDInputIntGreen
+            // NUDInputRGBAGreen
             // 
-            this.NUDInputIntGreen.Location = new System.Drawing.Point(112, 32);
-            this.NUDInputIntGreen.Maximum = new decimal(new int[] {
+            this.NUDInputRGBAGreen.Location = new System.Drawing.Point(112, 32);
+            this.NUDInputRGBAGreen.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NUDInputIntGreen.Name = "NUDInputIntGreen";
-            this.NUDInputIntGreen.Size = new System.Drawing.Size(52, 20);
-            this.NUDInputIntGreen.TabIndex = 2;
+            this.NUDInputRGBAGreen.Name = "NUDInputRGBAGreen";
+            this.NUDInputRGBAGreen.Size = new System.Drawing.Size(52, 20);
+            this.NUDInputRGBAGreen.TabIndex = 2;
             // 
             // label2
             // 
@@ -219,17 +219,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Green";
             // 
-            // NUDInputIntRed
+            // NUDInputRGBARed
             // 
-            this.NUDInputIntRed.Location = new System.Drawing.Point(112, 6);
-            this.NUDInputIntRed.Maximum = new decimal(new int[] {
+            this.NUDInputRGBARed.Location = new System.Drawing.Point(112, 6);
+            this.NUDInputRGBARed.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NUDInputIntRed.Name = "NUDInputIntRed";
-            this.NUDInputIntRed.Size = new System.Drawing.Size(52, 20);
-            this.NUDInputIntRed.TabIndex = 1;
+            this.NUDInputRGBARed.Name = "NUDInputRGBARed";
+            this.NUDInputRGBARed.Size = new System.Drawing.Size(52, 20);
+            this.NUDInputRGBARed.TabIndex = 1;
             // 
             // label1
             // 
@@ -345,23 +345,23 @@
             this.TBInputHex.Size = new System.Drawing.Size(158, 20);
             this.TBInputHex.TabIndex = 1;
             // 
-            // tabPageInputUInt
+            // tabPageInputInt
             // 
-            this.tabPageInputUInt.Controls.Add(this.TBInputUInt);
-            this.tabPageInputUInt.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInputUInt.Name = "tabPageInputUInt";
-            this.tabPageInputUInt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInputUInt.Size = new System.Drawing.Size(170, 110);
-            this.tabPageInputUInt.TabIndex = 3;
-            this.tabPageInputUInt.Text = "UInt";
-            this.tabPageInputUInt.UseVisualStyleBackColor = true;
+            this.tabPageInputInt.Controls.Add(this.TBInputInt);
+            this.tabPageInputInt.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInputInt.Name = "tabPageInputInt";
+            this.tabPageInputInt.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInputInt.Size = new System.Drawing.Size(170, 110);
+            this.tabPageInputInt.TabIndex = 3;
+            this.tabPageInputInt.Text = "Int";
+            this.tabPageInputInt.UseVisualStyleBackColor = true;
             // 
-            // TBInputUInt
+            // TBInputInt
             // 
-            this.TBInputUInt.Location = new System.Drawing.Point(6, 6);
-            this.TBInputUInt.Name = "TBInputUInt";
-            this.TBInputUInt.Size = new System.Drawing.Size(158, 20);
-            this.TBInputUInt.TabIndex = 1;
+            this.TBInputInt.Location = new System.Drawing.Point(6, 6);
+            this.TBInputInt.Name = "TBInputInt";
+            this.TBInputInt.Size = new System.Drawing.Size(158, 20);
+            this.TBInputInt.TabIndex = 1;
             // 
             // groupBoxOutput
             // 
@@ -375,10 +375,10 @@
             // 
             // tabControlOutput
             // 
-            this.tabControlOutput.Controls.Add(this.tabPageOutputInt);
+            this.tabControlOutput.Controls.Add(this.tabPageOutputRGBA);
             this.tabControlOutput.Controls.Add(this.tabPageOutputFloat);
             this.tabControlOutput.Controls.Add(this.tabPageOutputHex);
-            this.tabControlOutput.Controls.Add(this.tabPageOutputUInt);
+            this.tabControlOutput.Controls.Add(this.tabPageOutputInt);
             this.tabControlOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlOutput.Location = new System.Drawing.Point(3, 16);
             this.tabControlOutput.Name = "tabControlOutput";
@@ -386,55 +386,55 @@
             this.tabControlOutput.Size = new System.Drawing.Size(178, 136);
             this.tabControlOutput.TabIndex = 0;
             // 
-            // tabPageOutputInt
+            // tabPageOutputRGBA
             // 
-            this.tabPageOutputInt.Controls.Add(this.TBOutputIntAlpha);
-            this.tabPageOutputInt.Controls.Add(this.TBOutputIntBlue);
-            this.tabPageOutputInt.Controls.Add(this.TBOutputIntGreen);
-            this.tabPageOutputInt.Controls.Add(this.TBOutputIntRed);
-            this.tabPageOutputInt.Controls.Add(this.label9);
-            this.tabPageOutputInt.Controls.Add(this.label10);
-            this.tabPageOutputInt.Controls.Add(this.label11);
-            this.tabPageOutputInt.Controls.Add(this.label12);
-            this.tabPageOutputInt.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOutputInt.Name = "tabPageOutputInt";
-            this.tabPageOutputInt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOutputInt.Size = new System.Drawing.Size(170, 110);
-            this.tabPageOutputInt.TabIndex = 0;
-            this.tabPageOutputInt.Text = "RGBA";
-            this.tabPageOutputInt.UseVisualStyleBackColor = true;
+            this.tabPageOutputRGBA.Controls.Add(this.TBOutputRGBAAlpha);
+            this.tabPageOutputRGBA.Controls.Add(this.TBOutputRGBABlue);
+            this.tabPageOutputRGBA.Controls.Add(this.TBOutputRGBAGreen);
+            this.tabPageOutputRGBA.Controls.Add(this.TBOutputRGBARed);
+            this.tabPageOutputRGBA.Controls.Add(this.label9);
+            this.tabPageOutputRGBA.Controls.Add(this.label10);
+            this.tabPageOutputRGBA.Controls.Add(this.label11);
+            this.tabPageOutputRGBA.Controls.Add(this.label12);
+            this.tabPageOutputRGBA.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOutputRGBA.Name = "tabPageOutputRGBA";
+            this.tabPageOutputRGBA.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOutputRGBA.Size = new System.Drawing.Size(170, 110);
+            this.tabPageOutputRGBA.TabIndex = 0;
+            this.tabPageOutputRGBA.Text = "RGBA";
+            this.tabPageOutputRGBA.UseVisualStyleBackColor = true;
             // 
-            // TBOutputIntAlpha
+            // TBOutputRGBAAlpha
             // 
-            this.TBOutputIntAlpha.Location = new System.Drawing.Point(112, 83);
-            this.TBOutputIntAlpha.Name = "TBOutputIntAlpha";
-            this.TBOutputIntAlpha.ReadOnly = true;
-            this.TBOutputIntAlpha.Size = new System.Drawing.Size(52, 20);
-            this.TBOutputIntAlpha.TabIndex = 4;
+            this.TBOutputRGBAAlpha.Location = new System.Drawing.Point(112, 83);
+            this.TBOutputRGBAAlpha.Name = "TBOutputRGBAAlpha";
+            this.TBOutputRGBAAlpha.ReadOnly = true;
+            this.TBOutputRGBAAlpha.Size = new System.Drawing.Size(52, 20);
+            this.TBOutputRGBAAlpha.TabIndex = 4;
             // 
-            // TBOutputIntBlue
+            // TBOutputRGBABlue
             // 
-            this.TBOutputIntBlue.Location = new System.Drawing.Point(112, 57);
-            this.TBOutputIntBlue.Name = "TBOutputIntBlue";
-            this.TBOutputIntBlue.ReadOnly = true;
-            this.TBOutputIntBlue.Size = new System.Drawing.Size(52, 20);
-            this.TBOutputIntBlue.TabIndex = 3;
+            this.TBOutputRGBABlue.Location = new System.Drawing.Point(112, 57);
+            this.TBOutputRGBABlue.Name = "TBOutputRGBABlue";
+            this.TBOutputRGBABlue.ReadOnly = true;
+            this.TBOutputRGBABlue.Size = new System.Drawing.Size(52, 20);
+            this.TBOutputRGBABlue.TabIndex = 3;
             // 
-            // TBOutputIntGreen
+            // TBOutputRGBAGreen
             // 
-            this.TBOutputIntGreen.Location = new System.Drawing.Point(112, 31);
-            this.TBOutputIntGreen.Name = "TBOutputIntGreen";
-            this.TBOutputIntGreen.ReadOnly = true;
-            this.TBOutputIntGreen.Size = new System.Drawing.Size(52, 20);
-            this.TBOutputIntGreen.TabIndex = 2;
+            this.TBOutputRGBAGreen.Location = new System.Drawing.Point(112, 31);
+            this.TBOutputRGBAGreen.Name = "TBOutputRGBAGreen";
+            this.TBOutputRGBAGreen.ReadOnly = true;
+            this.TBOutputRGBAGreen.Size = new System.Drawing.Size(52, 20);
+            this.TBOutputRGBAGreen.TabIndex = 2;
             // 
-            // TBOutputIntRed
+            // TBOutputRGBARed
             // 
-            this.TBOutputIntRed.Location = new System.Drawing.Point(112, 5);
-            this.TBOutputIntRed.Name = "TBOutputIntRed";
-            this.TBOutputIntRed.ReadOnly = true;
-            this.TBOutputIntRed.Size = new System.Drawing.Size(52, 20);
-            this.TBOutputIntRed.TabIndex = 1;
+            this.TBOutputRGBARed.Location = new System.Drawing.Point(112, 5);
+            this.TBOutputRGBARed.Name = "TBOutputRGBARed";
+            this.TBOutputRGBARed.ReadOnly = true;
+            this.TBOutputRGBARed.Size = new System.Drawing.Size(52, 20);
+            this.TBOutputRGBARed.TabIndex = 1;
             // 
             // label9
             // 
@@ -585,24 +585,24 @@
             this.TBOutputHex.Size = new System.Drawing.Size(158, 20);
             this.TBOutputHex.TabIndex = 1;
             // 
-            // tabPageOutputUInt
+            // tabPageOutputInt
             // 
-            this.tabPageOutputUInt.Controls.Add(this.TBOutputUInt);
-            this.tabPageOutputUInt.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOutputUInt.Name = "tabPageOutputUInt";
-            this.tabPageOutputUInt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOutputUInt.Size = new System.Drawing.Size(170, 110);
-            this.tabPageOutputUInt.TabIndex = 3;
-            this.tabPageOutputUInt.Text = "UInt";
-            this.tabPageOutputUInt.UseVisualStyleBackColor = true;
+            this.tabPageOutputInt.Controls.Add(this.TBOutputInt);
+            this.tabPageOutputInt.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOutputInt.Name = "tabPageOutputInt";
+            this.tabPageOutputInt.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOutputInt.Size = new System.Drawing.Size(170, 110);
+            this.tabPageOutputInt.TabIndex = 3;
+            this.tabPageOutputInt.Text = "Int";
+            this.tabPageOutputInt.UseVisualStyleBackColor = true;
             // 
-            // TBOutputUInt
+            // TBOutputInt
             // 
-            this.TBOutputUInt.Location = new System.Drawing.Point(6, 6);
-            this.TBOutputUInt.Name = "TBOutputUInt";
-            this.TBOutputUInt.ReadOnly = true;
-            this.TBOutputUInt.Size = new System.Drawing.Size(158, 20);
-            this.TBOutputUInt.TabIndex = 1;
+            this.TBOutputInt.Location = new System.Drawing.Point(6, 6);
+            this.TBOutputInt.Name = "TBOutputInt";
+            this.TBOutputInt.ReadOnly = true;
+            this.TBOutputInt.Size = new System.Drawing.Size(158, 20);
+            this.TBOutputInt.TabIndex = 1;
             // 
             // PictureBoxColor
             // 
@@ -630,28 +630,28 @@
             this.Text = "Colorsion";
             this.groupBoxInput.ResumeLayout(false);
             this.tabControlInput.ResumeLayout(false);
-            this.tabPageInputInt.ResumeLayout(false);
-            this.tabPageInputInt.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntAlpha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntBlue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUDInputIntRed)).EndInit();
+            this.tabPageInputRGBA.ResumeLayout(false);
+            this.tabPageInputRGBA.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBAAlpha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBABlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBAGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDInputRGBARed)).EndInit();
             this.tabPageInputFloat.ResumeLayout(false);
             this.tabPageInputFloat.PerformLayout();
             this.tabPageInputHex.ResumeLayout(false);
             this.tabPageInputHex.PerformLayout();
-            this.tabPageInputUInt.ResumeLayout(false);
-            this.tabPageInputUInt.PerformLayout();
+            this.tabPageInputInt.ResumeLayout(false);
+            this.tabPageInputInt.PerformLayout();
             this.groupBoxOutput.ResumeLayout(false);
             this.tabControlOutput.ResumeLayout(false);
-            this.tabPageOutputInt.ResumeLayout(false);
-            this.tabPageOutputInt.PerformLayout();
+            this.tabPageOutputRGBA.ResumeLayout(false);
+            this.tabPageOutputRGBA.PerformLayout();
             this.tabPageOutputFloat.ResumeLayout(false);
             this.tabPageOutputFloat.PerformLayout();
             this.tabPageOutputHex.ResumeLayout(false);
             this.tabPageOutputHex.PerformLayout();
-            this.tabPageOutputUInt.ResumeLayout(false);
-            this.tabPageOutputUInt.PerformLayout();
+            this.tabPageOutputInt.ResumeLayout(false);
+            this.tabPageOutputInt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxColor)).EndInit();
             this.ResumeLayout(false);
 
@@ -661,17 +661,17 @@
         private System.Windows.Forms.Button BTNConvert;
         private System.Windows.Forms.GroupBox groupBoxInput;
         private System.Windows.Forms.TabControl tabControlInput;
-        private System.Windows.Forms.TabPage tabPageInputInt;
+        private System.Windows.Forms.TabPage tabPageInputRGBA;
         private System.Windows.Forms.TabPage tabPageInputFloat;
         private System.Windows.Forms.TabPage tabPageInputHex;
-        private System.Windows.Forms.TabPage tabPageInputUInt;
-        private System.Windows.Forms.NumericUpDown NUDInputIntAlpha;
+        private System.Windows.Forms.TabPage tabPageInputInt;
+        private System.Windows.Forms.NumericUpDown NUDInputRGBAAlpha;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown NUDInputIntBlue;
+        private System.Windows.Forms.NumericUpDown NUDInputRGBABlue;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown NUDInputIntGreen;
+        private System.Windows.Forms.NumericUpDown NUDInputRGBAGreen;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown NUDInputIntRed;
+        private System.Windows.Forms.NumericUpDown NUDInputRGBARed;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -682,10 +682,10 @@
         private System.Windows.Forms.TextBox TBInputFloatGreen;
         private System.Windows.Forms.TextBox TBInputFloatRed;
         private System.Windows.Forms.TextBox TBInputHex;
-        private System.Windows.Forms.TextBox TBInputUInt;
+        private System.Windows.Forms.TextBox TBInputInt;
         private System.Windows.Forms.GroupBox groupBoxOutput;
         private System.Windows.Forms.TabControl tabControlOutput;
-        private System.Windows.Forms.TabPage tabPageOutputInt;
+        private System.Windows.Forms.TabPage tabPageOutputRGBA;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -701,12 +701,12 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TabPage tabPageOutputHex;
         private System.Windows.Forms.TextBox TBOutputHex;
-        private System.Windows.Forms.TabPage tabPageOutputUInt;
-        private System.Windows.Forms.TextBox TBOutputUInt;
-        private System.Windows.Forms.TextBox TBOutputIntAlpha;
-        private System.Windows.Forms.TextBox TBOutputIntBlue;
-        private System.Windows.Forms.TextBox TBOutputIntGreen;
-        private System.Windows.Forms.TextBox TBOutputIntRed;
+        private System.Windows.Forms.TabPage tabPageOutputInt;
+        private System.Windows.Forms.TextBox TBOutputInt;
+        private System.Windows.Forms.TextBox TBOutputRGBAAlpha;
+        private System.Windows.Forms.TextBox TBOutputRGBABlue;
+        private System.Windows.Forms.TextBox TBOutputRGBAGreen;
+        private System.Windows.Forms.TextBox TBOutputRGBARed;
         private System.Windows.Forms.PictureBox PictureBoxColor;
     }
 }
