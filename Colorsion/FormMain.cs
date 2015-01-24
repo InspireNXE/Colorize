@@ -134,7 +134,7 @@ namespace Colorsion
         private static bool IsNullOrEmptyOrWhitespace(params TextBoxBase[] controls)
         {
             foreach(TextBoxBase control in controls) {
-                if (!string.IsNullOrEmpty(control.Text) || !string.IsNullOrWhiteSpace(control.Text))
+                if (string.IsNullOrEmpty(control.Text) || string.IsNullOrWhiteSpace(control.Text))
                 {
                     return true;
                 }
