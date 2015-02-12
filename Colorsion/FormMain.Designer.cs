@@ -164,6 +164,8 @@
             0,
             0,
             0});
+            this.NUDInputRGBAAlpha.Enter += new System.EventHandler(this.Control_Enter);
+            this.NUDInputRGBAAlpha.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label4
             // 
@@ -186,6 +188,8 @@
             this.NUDInputRGBABlue.Name = "NUDInputRGBABlue";
             this.NUDInputRGBABlue.Size = new System.Drawing.Size(52, 20);
             this.NUDInputRGBABlue.TabIndex = 3;
+            this.NUDInputRGBABlue.Enter += new System.EventHandler(this.Control_Enter);
+            this.NUDInputRGBABlue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label3
             // 
@@ -208,6 +212,8 @@
             this.NUDInputRGBAGreen.Name = "NUDInputRGBAGreen";
             this.NUDInputRGBAGreen.Size = new System.Drawing.Size(52, 20);
             this.NUDInputRGBAGreen.TabIndex = 2;
+            this.NUDInputRGBAGreen.Enter += new System.EventHandler(this.Control_Enter);
+            this.NUDInputRGBAGreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label2
             // 
@@ -230,6 +236,8 @@
             this.NUDInputRGBARed.Name = "NUDInputRGBARed";
             this.NUDInputRGBARed.Size = new System.Drawing.Size(52, 20);
             this.NUDInputRGBARed.TabIndex = 1;
+            this.NUDInputRGBARed.Enter += new System.EventHandler(this.Control_Enter);
+            this.NUDInputRGBARed.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label1
             // 
@@ -265,6 +273,8 @@
             this.TBInputFloatAlpha.Name = "TBInputFloatAlpha";
             this.TBInputFloatAlpha.Size = new System.Drawing.Size(52, 20);
             this.TBInputFloatAlpha.TabIndex = 4;
+            this.TBInputFloatAlpha.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputFloatAlpha.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // TBInputFloatBlue
             // 
@@ -272,6 +282,8 @@
             this.TBInputFloatBlue.Name = "TBInputFloatBlue";
             this.TBInputFloatBlue.Size = new System.Drawing.Size(52, 20);
             this.TBInputFloatBlue.TabIndex = 3;
+            this.TBInputFloatBlue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputFloatBlue.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // TBInputFloatGreen
             // 
@@ -279,6 +291,8 @@
             this.TBInputFloatGreen.Name = "TBInputFloatGreen";
             this.TBInputFloatGreen.Size = new System.Drawing.Size(52, 20);
             this.TBInputFloatGreen.TabIndex = 2;
+            this.TBInputFloatGreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputFloatGreen.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // TBInputFloatRed
             // 
@@ -286,6 +300,8 @@
             this.TBInputFloatRed.Name = "TBInputFloatRed";
             this.TBInputFloatRed.Size = new System.Drawing.Size(52, 20);
             this.TBInputFloatRed.TabIndex = 1;
+            this.TBInputFloatRed.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputFloatRed.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // label5
             // 
@@ -344,6 +360,8 @@
             this.TBInputHex.Name = "TBInputHex";
             this.TBInputHex.Size = new System.Drawing.Size(158, 20);
             this.TBInputHex.TabIndex = 1;
+            this.TBInputHex.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputHex.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // tabPageInputInt
             // 
@@ -362,6 +380,8 @@
             this.TBInputInt.Name = "TBInputInt";
             this.TBInputInt.Size = new System.Drawing.Size(158, 20);
             this.TBInputInt.TabIndex = 1;
+            this.TBInputInt.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
+            this.TBInputInt.Enter += new System.EventHandler(this.Control_Enter);
             // 
             // groupBoxOutput
             // 
@@ -411,6 +431,8 @@
             this.TBOutputRGBAAlpha.ReadOnly = true;
             this.TBOutputRGBAAlpha.Size = new System.Drawing.Size(52, 20);
             this.TBOutputRGBAAlpha.TabIndex = 4;
+            this.TBOutputRGBAAlpha.TabStop = false;
+            this.TBOutputRGBAAlpha.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputRGBABlue
             // 
@@ -419,6 +441,8 @@
             this.TBOutputRGBABlue.ReadOnly = true;
             this.TBOutputRGBABlue.Size = new System.Drawing.Size(52, 20);
             this.TBOutputRGBABlue.TabIndex = 3;
+            this.TBOutputRGBABlue.TabStop = false;
+            this.TBOutputRGBABlue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputRGBAGreen
             // 
@@ -427,6 +451,8 @@
             this.TBOutputRGBAGreen.ReadOnly = true;
             this.TBOutputRGBAGreen.Size = new System.Drawing.Size(52, 20);
             this.TBOutputRGBAGreen.TabIndex = 2;
+            this.TBOutputRGBAGreen.TabStop = false;
+            this.TBOutputRGBAGreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputRGBARed
             // 
@@ -435,6 +461,8 @@
             this.TBOutputRGBARed.ReadOnly = true;
             this.TBOutputRGBARed.Size = new System.Drawing.Size(52, 20);
             this.TBOutputRGBARed.TabIndex = 1;
+            this.TBOutputRGBARed.TabStop = false;
+            this.TBOutputRGBARed.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label9
             // 
@@ -501,6 +529,8 @@
             this.TBOutputFloatAlpha.ReadOnly = true;
             this.TBOutputFloatAlpha.Size = new System.Drawing.Size(52, 20);
             this.TBOutputFloatAlpha.TabIndex = 4;
+            this.TBOutputFloatAlpha.TabStop = false;
+            this.TBOutputFloatAlpha.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputFloatBlue
             // 
@@ -509,6 +539,8 @@
             this.TBOutputFloatBlue.ReadOnly = true;
             this.TBOutputFloatBlue.Size = new System.Drawing.Size(52, 20);
             this.TBOutputFloatBlue.TabIndex = 3;
+            this.TBOutputFloatBlue.TabStop = false;
+            this.TBOutputFloatBlue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputFloatGreen
             // 
@@ -517,6 +549,8 @@
             this.TBOutputFloatGreen.ReadOnly = true;
             this.TBOutputFloatGreen.Size = new System.Drawing.Size(52, 20);
             this.TBOutputFloatGreen.TabIndex = 2;
+            this.TBOutputFloatGreen.TabStop = false;
+            this.TBOutputFloatGreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // TBOutputFloatRed
             // 
@@ -525,6 +559,8 @@
             this.TBOutputFloatRed.ReadOnly = true;
             this.TBOutputFloatRed.Size = new System.Drawing.Size(52, 20);
             this.TBOutputFloatRed.TabIndex = 1;
+            this.TBOutputFloatRed.TabStop = false;
+            this.TBOutputFloatRed.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // label13
             // 
@@ -584,6 +620,8 @@
             this.TBOutputHex.ReadOnly = true;
             this.TBOutputHex.Size = new System.Drawing.Size(158, 20);
             this.TBOutputHex.TabIndex = 1;
+            this.TBOutputHex.TabStop = false;
+            this.TBOutputHex.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // tabPageOutputInt
             // 
@@ -603,6 +641,8 @@
             this.TBOutputInt.ReadOnly = true;
             this.TBOutputInt.Size = new System.Drawing.Size(158, 20);
             this.TBOutputInt.TabIndex = 1;
+            this.TBOutputInt.TabStop = false;
+            this.TBOutputInt.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Control_MouseClick);
             // 
             // PictureBoxColor
             // 

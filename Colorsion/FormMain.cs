@@ -119,8 +119,7 @@ namespace Colorsion
 
         private static string ToHex(Color color)
         {
-            return string.Format("#{0}{1}{2}{3}",
-                                        color.A.ToString("X").Length == 1 ? string.Format("0{0}", color.A.ToString("X")) : color.A.ToString("X"),
+            return string.Format("#{0}{1}{2}",
                                         color.R.ToString("X").Length == 1 ? string.Format("0{0}", color.R.ToString("X")) : color.R.ToString("X"),
                                         color.G.ToString("X").Length == 1 ? string.Format("0{0}", color.G.ToString("X")) : color.G.ToString("X"),
                                         color.B.ToString("X").Length == 1 ? string.Format("0{0}", color.B.ToString("X")) : color.B.ToString("X"));
@@ -128,7 +127,7 @@ namespace Colorsion
 
         private static int ToInt(Color color)
         {
-            return Convert.ToInt32(color.ToArgb());
+            return 256 * 256 * color.R + 256 * color.G + color.B;
         }
 
         private static bool IsNullOrEmptyOrWhitespace(params TextBoxBase[] controls)
@@ -140,6 +139,31 @@ namespace Colorsion
                 }
             }
             return false;
+        }
+
+        private void Control_Enter(object sender, EventArgs e)
+        {
+            if (sender is NumericUpDown)
+            {
+                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Value.ToString().Length);
+            }
+            else if (sender is TextBox)
+            {
+                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
+            }
+            
+        }
+
+        private void Control_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (sender is NumericUpDown)
+            {
+                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Text.Length);
+            }
+            else if (sender is TextBox)
+            {
+                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
+            }
         }
     }
 }
