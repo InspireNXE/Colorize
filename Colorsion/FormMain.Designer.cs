@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.BTNConvert = new System.Windows.Forms.Button();
             this.groupBoxInput = new System.Windows.Forms.GroupBox();
             this.tabControlInput = new System.Windows.Forms.TabControl();
@@ -664,6 +665,7 @@
             this.Controls.Add(this.groupBoxInput);
             this.Controls.Add(this.BTNConvert);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
