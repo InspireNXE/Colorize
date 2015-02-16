@@ -27,7 +27,7 @@ namespace Colorsion
                     Populate(Color.FromArgb((int)NUDInputRGBAAlpha.Value,
                                             (int)NUDInputRGBARed.Value,
                                             (int)NUDInputRGBAGreen.Value,
-                                            (int)NUDInputRGBABlue.Value));
+                                            (int)NUDInputRGBABlue.Value), true);
                     break;
                 case 1:
                     if (IsNullOrEmptyOrWhitespace(TBInputFloatAlpha, TBInputFloatRed, TBInputFloatGreen, TBInputFloatBlue))
@@ -40,7 +40,7 @@ namespace Colorsion
                         Populate(Color.FromArgb((int)(float.Parse(TBInputFloatAlpha.Text) * 255f),
                                                 (int)(float.Parse(TBInputFloatRed.Text) * 255f),
                                                 (int)(float.Parse(TBInputFloatGreen.Text) * 255f),
-                                                (int)(float.Parse(TBInputFloatBlue.Text) * 255f)));
+                                                (int)(float.Parse(TBInputFloatBlue.Text) * 255f)), true);
                     }
                     catch (Exception)
                     {
@@ -56,7 +56,7 @@ namespace Colorsion
                     try
                     {
                         // Ensure that we pass in a # to the translator
-                        Populate(ColorTranslator.FromHtml((TBInputHex.Text.StartsWith("#") ? "" : "#") + TBInputHex.Text));
+                        Populate(ColorTranslator.FromHtml((TBInputHex.Text.StartsWith("#") ? "" : "#") + TBInputHex.Text), false);
                     }
                     catch (Exception)
                     {
@@ -72,7 +72,7 @@ namespace Colorsion
                     try
                     {
                         var value = int.Parse(TBInputInt.Text);
-                        Populate(Color.FromArgb(value));
+                        Populate(Color.FromArgb(value), false);
                     }
                     catch (Exception)
                     {
@@ -82,9 +82,13 @@ namespace Colorsion
             }
         }
 
-        private void Populate(Color color)
+        private void Populate(Color color, bool useAlpha)
         {
             PictureBoxColor.BackColor = color;
+            if (!useAlpha)
+            {
+                PictureBoxColor.BackColor = Color.FromArgb(255, color.R, color.G, color.B);
+            }
 
             // RGBA Output
             TBOutputRGBAAlpha.Text = color.A.ToString();
