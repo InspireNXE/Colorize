@@ -1,4 +1,4 @@
-﻿namespace Colorsion
+﻿namespace Colorize
 {
     partial class FormMain
     {
@@ -669,7 +669,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
-            this.Text = "Colorsion";
+            this.Text = "Colorize";
             this.groupBoxInput.ResumeLayout(false);
             this.tabControlInput.ResumeLayout(false);
             this.tabPageInputRGBA.ResumeLayout(false);

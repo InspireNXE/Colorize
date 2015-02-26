@@ -7,8 +7,8 @@
     <ProjectGuid>{04C350EF-0230-4354-A587-E78BF640B593}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Colorsion</RootNamespace>
-    <AssemblyName>Colorsion</AssemblyName>
+    <RootNamespace>Colorize</RootNamespace>
+    <AssemblyName>Colorize</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,10 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Colorsion.Program</StartupObject>
+    <StartupObject>Colorize.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\colorsion.logo.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\colorize.logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -82,7 +82,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\colorsion.logo.ico" />
+    <Content Include="Resources\colorize.logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

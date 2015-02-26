@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Colorsion
+namespace Colorize
 {
     public partial class FormMain : Form
     {
