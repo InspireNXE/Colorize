@@ -6,7 +6,7 @@ A simple, easy to use program that allows quick conversion between different sty
 * .NET 4.0
 
 ### Download
-Colorize can be downloaded from the following URL: http://assets.inspirenxe.org/files/colorize/colorize_latest.exe
+Colorize can be downloaded [here](https://github.com/Grinch/Colorize/releases/latest).
 
 ### Cloning
 If you are using Git, use this command to clone the project: `git clone git@github.com:Grinch/Colorize.git`
