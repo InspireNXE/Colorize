@@ -1,173 +1,236 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Colorize
 {
     public partial class FormMain : Form
     {
-        private static readonly ToolTip TTColor = new ToolTip();
-
         public FormMain()
         {
             InitializeComponent();
         }
 
-        private void ButtonConvert_Click(object sender, EventArgs e)
+        private void RGB_Int_TextChanged(object sender, EventArgs e)
         {
-            /**
-             * 0 - RGBA
-             * 1 - Float
-             * 2 - Hex
-             * 3 - Int
-             */
-            switch (tabControlInput.SelectedIndex)
+            if (Extensions.AreEmpty(TB_Int_A, TB_Int_R, TB_Int_G, TB_Int_B))
             {
-                case 0:
-                    Populate(Color.FromArgb((int)NUDInputRGBAAlpha.Value,
-                                            (int)NUDInputRGBARed.Value,
-                                            (int)NUDInputRGBAGreen.Value,
-                                            (int)NUDInputRGBABlue.Value), true);
-                    break;
-                case 1:
-                    if (IsNullOrEmptyOrWhitespace(TBInputFloatAlpha, TBInputFloatRed, TBInputFloatGreen, TBInputFloatBlue))
-                    {
-                        return;
-                    }
+                return;
+            }
 
-                    try
-                    {
-                        Populate(Color.FromArgb((int)(float.Parse(TBInputFloatAlpha.Text) * 255f),
-                                                (int)(float.Parse(TBInputFloatRed.Text) * 255f),
-                                                (int)(float.Parse(TBInputFloatGreen.Text) * 255f),
-                                                (int)(float.Parse(TBInputFloatBlue.Text) * 255f)), true);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Values must be between 0 and 1!");
-                    }
-                    break;
-                case 2:
-                    if (IsNullOrEmptyOrWhitespace(TBInputHex))
-                    {
-                        return;
-                    }
+            int a;
+            int r;
+            int g;
+            int b;
 
-                    try
-                    {
-                        // Ensure that we pass in a # to the translator
-                        Populate(ColorTranslator.FromHtml((TBInputHex.Text.StartsWith("#") ? "" : "#") + TBInputHex.Text), false);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Invalid Hex value!");
-                    }
-                    break;
-                case 3:
-                    if (IsNullOrEmptyOrWhitespace(TBInputInt))
-                    {
-                        return;
-                    }
+            try
+            {
+                a = int.Parse(TB_Int_A.Text);
+                r = int.Parse(TB_Int_R.Text);
+                g = int.Parse(TB_Int_G.Text);
+                b = int.Parse(TB_Int_B.Text);
+            }
+            catch (FormatException)
+            {
+                return;
+            }
 
-                    try
-                    {
-                        var value = int.Parse(TBInputInt.Text);
-                        Populate(Color.FromArgb(value), false);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Value must be between " + int.MinValue + " and " + int.MaxValue);
-                    }
-                    break;
+
+            try
+            {
+                Populate(RGB_Int_TextChanged, Color.FromArgb(a, r, g, b));
+            }
+            catch (ArgumentException)
+            {
             }
         }
 
-        private void Populate(Color color, bool useAlpha)
+        private void RGB_Float_TextChanged(object sender, EventArgs e)
         {
-            PictureBoxColor.BackColor = color;
-            if (!useAlpha)
+            if (Extensions.AreEmpty(TB_Float_A, TB_Float_R, TB_Float_G, TB_Float_B))
             {
-                PictureBoxColor.BackColor = Color.FromArgb(255, color.R, color.G, color.B);
+                return;
             }
 
-            // RGBA Output
-            TBOutputRGBAAlpha.Text = color.A.ToString();
-            TBOutputRGBARed.Text = color.R.ToString();
-            TBOutputRGBAGreen.Text = color.G.ToString();
-            TBOutputRGBABlue.Text = color.B.ToString();
+            int a;
+            int r;
+            int g;
+            int b;
 
-            // Float Output
-            TBOutputFloatAlpha.Text = (color.A / 255f).ToString();
-            TBOutputFloatRed.Text = (color.R / 255f).ToString();
-            TBOutputFloatGreen.Text = (color.G / 255f).ToString();
-            TBOutputFloatBlue.Text = (color.B / 255f).ToString();
+            try
+            {
+                a = (int)(float.Parse(TB_Float_A.Text) * 255f);
+                r = (int)(float.Parse(TB_Float_R.Text) * 255f);
+                g = (int)(float.Parse(TB_Float_G.Text) * 255f);
+                b = (int)(float.Parse(TB_Float_B.Text) * 255f);
+            }
+            catch (FormatException)
+            {
+                return;
+            }
 
-            // Hex Output
-            TBOutputHex.Text = ToHex(color);
 
-            // Int Output
-            TBOutputInt.Text = ToInt(color).ToString();
+            try
+            {
+                Populate(RGB_Float_TextChanged, Color.FromArgb(a, r, g, b));
+            }
+            catch (ArgumentException)
+            {
+            }
         }
 
-        private void PictureBoxColor_MouseHover(object sender, EventArgs e)
+        private void HEX_TextChanged(object sender, EventArgs e)
         {
-            TTColor.RemoveAll();
-            TTColor.Show(string.Format("Alpha: {0}\nRed: {1}\nGreen: {2}\nBlue: {3}\nHex: {4}\nInt: {5}",
-                                              PictureBoxColor.BackColor.A,
-                                              PictureBoxColor.BackColor.R,
-                                              PictureBoxColor.BackColor.G,
-                                              PictureBoxColor.BackColor.B,
-                                              ToHex(PictureBoxColor.BackColor),
-                                              ToInt(PictureBoxColor.BackColor)), PictureBoxColor);
+            if (TB_HEX.IsEmpty())
+            {
+                return;
+            }
+            var value = TB_HEX.Text;
+
+            try
+            {
+                Populate(HEX_TextChanged, ColorTranslator.FromHtml((value.StartsWith("#") ? "" : "#") + value));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
-        private static string ToHex(Color color)
+        private void Int_TextChanged(object sender, EventArgs e)
         {
-            return string.Format("#{0}{1}{2}",
-                                        color.R.ToString("X").Length == 1 ? string.Format("0{0}", color.R.ToString("X")) : color.R.ToString("X"),
-                                        color.G.ToString("X").Length == 1 ? string.Format("0{0}", color.G.ToString("X")) : color.G.ToString("X"),
-                                        color.B.ToString("X").Length == 1 ? string.Format("0{0}", color.B.ToString("X")) : color.B.ToString("X"));
+            if (TB_Int.IsEmpty() || TB_Int.Text.Equals("-"))
+            {
+                return;
+            }
+            try
+            {
+                var value = Convert.ToInt32(TB_Int.Text);
+                Populate(Int_TextChanged, Color.FromArgb(value));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
-        private static int ToInt(Color color)
+        private void PBCurrentColor_Click(object sender, EventArgs e)
         {
-            return 256 * 256 * color.R + 256 * color.G + color.B;
+            CDCustomColor.FullOpen = true;
+            if (CDCustomColor.ShowDialog(this) == DialogResult.OK)
+            {
+                Populate(PBCurrentColor_Click, CDCustomColor.Color);
+            }
         }
 
-        private static bool IsNullOrEmptyOrWhitespace(params TextBoxBase[] controls)
+        private void TB_Leave(object sender, EventArgs e)
         {
-            foreach(TextBoxBase control in controls) {
-                if (string.IsNullOrEmpty(control.Text) || string.IsNullOrWhiteSpace(control.Text))
+            if (sender is TextBoxBase)
+            {
+                var control = (TextBoxBase)sender;
+                var value = "0";
+                if (control.Text.IsEmpty())
                 {
-                    return true;
+                    if (control == TB_HEX)
+                    {
+                        value = @"#000000";
+                    }
+                    else if (control == TB_Int_A)
+                    {
+                        value = @"255";
+                    }
+                    else if (control == TB_Float_A)
+                    {
+                        value = @"1";
+                    }
+                    control.Text = value;
                 }
             }
-            return false;
         }
 
-        private void Control_Enter(object sender, EventArgs e)
+        private void TSMI_File_Exit_Click(object sender, EventArgs e)
         {
-            if (sender is NumericUpDown)
-            {
-                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Value.ToString().Length);
-            }
-            else if (sender is TextBox)
-            {
-                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
-            }
-            
+            Application.Exit();
         }
 
-        private void Control_MouseClick(object sender, MouseEventArgs e)
+        private void TSMI_Help_Source_Click(object sender, EventArgs e)
         {
-            if (sender is NumericUpDown)
+            Process.Start(Program.Repo);
+        }
+
+        private void TSMI_Help_Issues_Click(object sender, EventArgs e)
+        {
+            Process.Start(Program.Issues);
+        }
+
+        private void TSMI_Help_Donate_Click(object sender, EventArgs e)
+        {
+            Process.Start(Program.Donate);
+        }
+
+        private void TSMI_Help_Releases_Click(object sender, EventArgs e)
+        {
+            Process.Start(Program.Releases);
+        }
+
+        private void TSMI_Help_About_Click(object sender, EventArgs e)
+        {
+            new FormAbout().ShowDialog(this);
+        }
+
+        private void Populate(EventHandler handler, Color color)
+        {
+            if (handler == HEX_TextChanged || handler == Int_TextChanged)
             {
-                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Text.Length);
+                color = Color.FromArgb(255, color.R, color.G, color.B);
             }
-            else if (sender is TextBox)
-            {
-                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
-            }
+
+            PBCurrentColor.BackColor = color;
+
+            // Remove TextChanged handlers to avoid stackoverflows
+            Extensions.RemoveTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
+            Extensions.RemoveTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
+            Extensions.RemoveTextChangedHandlers(HEX_TextChanged, TB_HEX);
+            Extensions.RemoveTextChangedHandlers(Int_TextChanged, TB_Int);
+
+            // Populate Int RGBA textboxes
+            TB_Int_R.SetTextIfNotFocused(color.R.ToString());
+            TB_Int_G.SetTextIfNotFocused(color.G.ToString());
+            TB_Int_B.SetTextIfNotFocused(color.B.ToString());
+            TB_Int_A.SetTextIfNotFocused(color.A.ToString());
+
+            // Populate Float RGBA textboxes
+            TB_Float_R.SetTextIfNotFocused((color.R / 255f).ToString(CultureInfo.InvariantCulture));
+            TB_Float_G.SetTextIfNotFocused((color.G / 255f).ToString(CultureInfo.InvariantCulture));
+            TB_Float_B.SetTextIfNotFocused((color.B / 255f).ToString(CultureInfo.InvariantCulture));
+            TB_Float_A.SetTextIfNotFocused((color.A / 255f).ToString(CultureInfo.InvariantCulture));
+
+            // Populate HEX textbox
+            TB_HEX.SetTextIfNotFocused(color.ToHex());
+
+            // Populate Int textbox
+            TB_Int.SetTextIfNotFocused(color.ToInt().ToString());
+
+            // Populate CDCustomColor
+            CDCustomColor.Color = color;
+
+            // Add TextChanged handlers now that we're finished
+            Extensions.AddTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
+            Extensions.AddTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
+            Extensions.AddTextChangedHandlers(HEX_TextChanged, TB_HEX);
+            Extensions.AddTextChangedHandlers(Int_TextChanged, TB_Int);
+        }
+
+        private void PBCurrentColor_MouseEnter(object sender, EventArgs e)
+        {
+            TTColorDialog.Show("Click to show a color picker", PBCurrentColor);
+        }
+
+        private void PBCurrentColor_MouseLeave(object sender, EventArgs e)
+        {
+            TTColorDialog.Hide(PBCurrentColor);
         }
     }
 }
