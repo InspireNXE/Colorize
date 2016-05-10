@@ -78,20 +78,22 @@ namespace Colorize
             }
             catch (ArgumentException)
             {
+                // ignored
             }
         }
 
         private void HEX_TextChanged(object sender, EventArgs e)
         {
-            if (TB_HEX.IsEmpty())
+            var textBox = sender as TextBox;
+            if (textBox == null || textBox.IsEmpty())
             {
                 return;
             }
-            var value = TB_HEX.Text;
 
+            var id = sender == TB_PROG ? "0x" : "#";
             try
             {
-                Populate(HEX_TextChanged, ColorTranslator.FromHtml((value.StartsWith("#") ? "" : "#") + value));
+                Populate(HEX_TextChanged, ColorTranslator.FromHtml((textBox.Text.StartsWith(id) ? string.Empty : id) + textBox.Text));
             }
             catch (Exception)
             {
@@ -101,14 +103,14 @@ namespace Colorize
 
         private void Int_TextChanged(object sender, EventArgs e)
         {
-            if (TB_Int.IsEmpty() || TB_Int.Text.Equals("-"))
+            var textBox = sender as TextBox;
+            if (textBox == null || textBox.IsEmpty() || textBox.Text.Equals("-"))
             {
                 return;
             }
             try
             {
-                var value = Convert.ToInt32(TB_Int.Text);
-                Populate(Int_TextChanged, Color.FromArgb(value));
+                Populate(Int_TextChanged, Color.FromArgb(Convert.ToInt32(textBox.Text)));
             }
             catch (Exception)
             {
@@ -140,6 +142,10 @@ namespace Colorize
                     else if (control == TB_Int_A)
                     {
                         value = @"255";
+                    }
+                    else if (control == TB_PROG)
+                    {
+                        value = @"0x000000";
                     }
                     else if (control == TB_Float_A)
                     {
@@ -194,6 +200,7 @@ namespace Colorize
             Extensions.RemoveTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
             Extensions.RemoveTextChangedHandlers(HEX_TextChanged, TB_HEX);
             Extensions.RemoveTextChangedHandlers(Int_TextChanged, TB_Int);
+            Extensions.RemoveTextChangedHandlers(HEX_TextChanged, TB_PROG);
 
             // Populate Int RGBA textboxes
             TB_Int_R.SetTextIfNotFocused(color.R.ToString());
@@ -208,10 +215,13 @@ namespace Colorize
             TB_Float_A.SetTextIfNotFocused((color.A / 255f).ToString(CultureInfo.InvariantCulture));
 
             // Populate HEX textbox
-            TB_HEX.SetTextIfNotFocused(color.ToHex());
+            TB_HEX.SetTextIfNotFocused(color.ToHex("#"));
 
             // Populate Int textbox
             TB_Int.SetTextIfNotFocused(color.ToInt().ToString());
+
+            // Populate PROG textbox
+            TB_PROG.SetTextIfNotFocused(color.ToHex("0x"));
 
             // Populate CDCustomColor
             CDCustomColor.Color = color;
@@ -221,6 +231,7 @@ namespace Colorize
             Extensions.AddTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
             Extensions.AddTextChangedHandlers(HEX_TextChanged, TB_HEX);
             Extensions.AddTextChangedHandlers(Int_TextChanged, TB_Int);
+            Extensions.AddTextChangedHandlers(HEX_TextChanged, TB_PROG);
         }
 
         private void PBCurrentColor_MouseEnter(object sender, EventArgs e)
@@ -231,6 +242,11 @@ namespace Colorize
         private void PBCurrentColor_MouseLeave(object sender, EventArgs e)
         {
             TTColorDialog.Hide(PBCurrentColor);
+        }
+
+        private void HEX_TextChanged(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

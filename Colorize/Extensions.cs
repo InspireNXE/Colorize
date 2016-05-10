@@ -60,10 +60,10 @@ namespace Colorize
         #endregion
 
         #region "Color"
-        public static string ToHex(this Color color)
+        public static string ToHex(this Color color, string id)
         {
             return
-                @"#" +
+                id +
                 $"{(color.R.ToString("X").Length == 1 ? $"0{color.R.ToString("X")}" : color.R.ToString("X"))}" +
                 $"{(color.G.ToString("X").Length == 1 ? $"0{color.G.ToString("X")}" : color.G.ToString("X"))}" + 
                 $"{(color.B.ToString("X").Length == 1 ? $"0{color.B.ToString("X")}" : color.B.ToString("X"))}";

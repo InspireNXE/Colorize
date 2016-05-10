@@ -64,6 +64,8 @@
             this.TSMI_Help_About = new System.Windows.Forms.ToolStripMenuItem();
             this.CDCustomColor = new System.Windows.Forms.ColorDialog();
             this.TTColorDialog = new System.Windows.Forms.ToolTip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.TB_PROG = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBCurrentColor)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -171,7 +173,7 @@
             // 
             this.PBCurrentColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.PBCurrentColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PBCurrentColor.Location = new System.Drawing.Point(12, 204);
+            this.PBCurrentColor.Location = new System.Drawing.Point(12, 232);
             this.PBCurrentColor.Name = "PBCurrentColor";
             this.PBCurrentColor.Size = new System.Drawing.Size(200, 24);
             this.PBCurrentColor.TabIndex = 25;
@@ -182,9 +184,9 @@
             // 
             // TB_Int
             // 
-            this.TB_Int.Location = new System.Drawing.Point(138, 176);
+            this.TB_Int.Location = new System.Drawing.Point(149, 176);
             this.TB_Int.Name = "TB_Int";
-            this.TB_Int.Size = new System.Drawing.Size(74, 22);
+            this.TB_Int.Size = new System.Drawing.Size(63, 22);
             this.TB_Int.TabIndex = 3;
             this.TB_Int.Text = "-14967553";
             this.TB_Int.TextChanged += new System.EventHandler(this.Int_TextChanged);
@@ -211,9 +213,9 @@
             // 
             // TB_HEX
             // 
-            this.TB_HEX.Location = new System.Drawing.Point(39, 176);
+            this.TB_HEX.Location = new System.Drawing.Point(46, 176);
             this.TB_HEX.Name = "TB_HEX";
-            this.TB_HEX.Size = new System.Drawing.Size(70, 22);
+            this.TB_HEX.Size = new System.Drawing.Size(63, 22);
             this.TB_HEX.TabIndex = 2;
             this.TB_HEX.Text = "#1B9CFF";
             this.TB_HEX.TextChanged += new System.EventHandler(this.HEX_TextChanged);
@@ -398,11 +400,31 @@
             // 
             this.TTColorDialog.ShowAlways = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 14);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "PROG";
+            // 
+            // TB_PROG
+            // 
+            this.TB_PROG.Location = new System.Drawing.Point(46, 204);
+            this.TB_PROG.Name = "TB_PROG";
+            this.TB_PROG.Size = new System.Drawing.Size(63, 22);
+            this.TB_PROG.TabIndex = 4;
+            this.TB_PROG.Text = "0x1B9CFF";
+            this.TB_PROG.TextChanged += new System.EventHandler(this.HEX_TextChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 239);
+            this.ClientSize = new System.Drawing.Size(224, 264);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.TB_PROG);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.TB_Int);
             this.Controls.Add(this.label7);
@@ -466,5 +488,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_Help_Releases;
         private System.Windows.Forms.ColorDialog CDCustomColor;
         private System.Windows.Forms.ToolTip TTColorDialog;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TB_PROG;
     }
 }
