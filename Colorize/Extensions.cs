@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,12 +16,12 @@ namespace Colorize
         #region "TextBoxBase"
         public static bool IsEmpty(this TextBoxBase control)
         {
-            return control.Text.IsEmpty();
+            return control == null || control.Text.IsEmpty();
         }
 
         public static bool AreEmpty(params TextBoxBase[] controls)
         {
-            return controls.Any(control => control.Text.IsEmpty());
+            return controls.Any(control => control == null || control.Text.IsEmpty());
         }
 
         public static void SetTextIfNotFocused(this TextBoxBase control, string value)
@@ -30,31 +29,6 @@ namespace Colorize
             if (!control.Focused)
             {
                 control.Text = value;
-            }
-        }
-
-        public static void AddTextChangedHandlers(EventHandler value, params Control[] controls)
-        {
-            SetTextChangedHandlers(value, true, controls);
-        }
-
-        public static void RemoveTextChangedHandlers(EventHandler value, params Control[] controls)
-        {
-            SetTextChangedHandlers(value, false, controls);
-        }
-
-        public static void SetTextChangedHandlers(EventHandler value, bool add, params Control[] controls)
-        {
-            foreach (var control in controls)
-            {
-                if (add)
-                {
-                    control.TextChanged += value;
-                }
-                else
-                {
-                    control.TextChanged -= value;
-                }
             }
         }
         #endregion

@@ -196,11 +196,11 @@ namespace Colorize
             PBCurrentColor.BackColor = color;
 
             // Remove TextChanged handlers to avoid stackoverflows
-            Extensions.RemoveTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
-            Extensions.RemoveTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
-            Extensions.RemoveTextChangedHandlers(HEX_TextChanged, TB_HEX);
-            Extensions.RemoveTextChangedHandlers(Int_TextChanged, TB_Int);
-            Extensions.RemoveTextChangedHandlers(HEX_TextChanged, TB_PROG);
+            Utils.RemoveTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
+            Utils.RemoveTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
+            Utils.RemoveTextChangedHandlers(HEX_TextChanged, TB_HEX);
+            Utils.RemoveTextChangedHandlers(Int_TextChanged, TB_Int);
+            Utils.RemoveTextChangedHandlers(HEX_TextChanged, TB_PROG);
 
             // Populate Int RGBA textboxes
             TB_Int_R.SetTextIfNotFocused(color.R.ToString());
@@ -227,11 +227,11 @@ namespace Colorize
             CDCustomColor.Color = color;
 
             // Add TextChanged handlers now that we're finished
-            Extensions.AddTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
-            Extensions.AddTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
-            Extensions.AddTextChangedHandlers(HEX_TextChanged, TB_HEX);
-            Extensions.AddTextChangedHandlers(Int_TextChanged, TB_Int);
-            Extensions.AddTextChangedHandlers(HEX_TextChanged, TB_PROG);
+            Utils.AddTextChangedHandlers(RGB_Int_TextChanged, TB_Int_R, TB_Int_G, TB_Int_B, TB_Int_A);
+            Utils.AddTextChangedHandlers(RGB_Float_TextChanged, TB_Float_R, TB_Float_G, TB_Float_B, TB_Float_A);
+            Utils.AddTextChangedHandlers(HEX_TextChanged, TB_HEX);
+            Utils.AddTextChangedHandlers(Int_TextChanged, TB_Int);
+            Utils.AddTextChangedHandlers(HEX_TextChanged, TB_PROG);
         }
 
         private void PBCurrentColor_MouseEnter(object sender, EventArgs e)
@@ -242,11 +242,6 @@ namespace Colorize
         private void PBCurrentColor_MouseLeave(object sender, EventArgs e)
         {
             TTColorDialog.Hide(PBCurrentColor);
-        }
-
-        private void HEX_TextChanged(object sender, KeyPressEventArgs e)
-        {
-
         }
     }
 }
