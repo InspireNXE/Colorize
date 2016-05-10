@@ -1,6 +1,6 @@
 Colorize
 =============
-Colorize is a simple tool designed to quickly let someone convert one color format to another.
+Colorize is a simple and lightweight tool aimed to take one color format and convert it to another. 
 
 ### Prerequisites
 * .NET 4.0
