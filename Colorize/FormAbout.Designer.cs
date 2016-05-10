@@ -33,7 +33,6 @@
             this.LblName = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,28 +79,18 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(141, 60);
+            this.label3.Location = new System.Drawing.Point(138, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(284, 14);
+            this.label3.Size = new System.Drawing.Size(280, 44);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Colorize is a simple tool designed to quickly let someone";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(141, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 14);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "convert one color format to another.";
+            this.label3.Text = "Colorize is a simple and lightweight tool aimed to take one color format and conv" +
+    "ert it to another.";
             // 
             // FormAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 308);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblName);
@@ -128,6 +117,5 @@
         private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
     }
 }
