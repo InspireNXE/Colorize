@@ -48,6 +48,26 @@ namespace Colorize
             var tempColor = Color.FromArgb(255, color.R, color.G, color.B);
             return tempColor.ToArgb();
         }
+
+        public static float GetFloatR(this Color color)
+        {
+            return color.R / 255f;
+        }
+
+        public static float GetFloatG(this Color color)
+        {
+            return color.G / 255f;
+        }
+
+        public static float GetFloatB(this Color color)
+        {
+            return color.B / 255f;
+        }
+
+        public static float GetFloatA(this Color color)
+        {
+            return color.A / 255f;
+        }
         #endregion
     }
 }

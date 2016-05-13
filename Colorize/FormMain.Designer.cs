@@ -360,35 +360,35 @@
             // TSMI_Help_Source
             // 
             this.TSMI_Help_Source.Name = "TSMI_Help_Source";
-            this.TSMI_Help_Source.Size = new System.Drawing.Size(118, 22);
+            this.TSMI_Help_Source.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Help_Source.Text = "Source";
             this.TSMI_Help_Source.Click += new System.EventHandler(this.TSMI_Help_Source_Click);
             // 
             // TSMI_Help_Issues
             // 
             this.TSMI_Help_Issues.Name = "TSMI_Help_Issues";
-            this.TSMI_Help_Issues.Size = new System.Drawing.Size(118, 22);
+            this.TSMI_Help_Issues.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Help_Issues.Text = "Issues";
             this.TSMI_Help_Issues.Click += new System.EventHandler(this.TSMI_Help_Issues_Click);
             // 
             // TSMI_Help_Donate
             // 
             this.TSMI_Help_Donate.Name = "TSMI_Help_Donate";
-            this.TSMI_Help_Donate.Size = new System.Drawing.Size(118, 22);
+            this.TSMI_Help_Donate.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Help_Donate.Text = "Donate";
             this.TSMI_Help_Donate.Click += new System.EventHandler(this.TSMI_Help_Donate_Click);
             // 
             // TSMI_Help_Releases
             // 
             this.TSMI_Help_Releases.Name = "TSMI_Help_Releases";
-            this.TSMI_Help_Releases.Size = new System.Drawing.Size(118, 22);
+            this.TSMI_Help_Releases.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Help_Releases.Text = "Releases";
             this.TSMI_Help_Releases.Click += new System.EventHandler(this.TSMI_Help_Releases_Click);
             // 
             // TSMI_Help_About
             // 
             this.TSMI_Help_About.Name = "TSMI_Help_About";
-            this.TSMI_Help_About.Size = new System.Drawing.Size(118, 22);
+            this.TSMI_Help_About.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Help_About.Text = "About";
             this.TSMI_Help_About.Click += new System.EventHandler(this.TSMI_Help_About_Click);
             // 

@@ -203,25 +203,25 @@ namespace Colorize
             Utils.RemoveTextChangedHandlers(HEX_TextChanged, TB_PROG);
 
             // Populate Int RGBA textboxes
-            TB_Int_R.SetTextIfNotFocused(color.R.ToString());
-            TB_Int_G.SetTextIfNotFocused(color.G.ToString());
-            TB_Int_B.SetTextIfNotFocused(color.B.ToString());
-            TB_Int_A.SetTextIfNotFocused(color.A.ToString());
+            TB_Int_R.Text = color.R.ToString();
+            TB_Int_G.Text = color.G.ToString();
+            TB_Int_B.Text = color.B.ToString();
+            TB_Int_A.Text = color.A.ToString();
 
             // Populate Float RGBA textboxes
-            TB_Float_R.SetTextIfNotFocused((color.R / 255f).ToString(CultureInfo.InvariantCulture));
-            TB_Float_G.SetTextIfNotFocused((color.G / 255f).ToString(CultureInfo.InvariantCulture));
-            TB_Float_B.SetTextIfNotFocused((color.B / 255f).ToString(CultureInfo.InvariantCulture));
-            TB_Float_A.SetTextIfNotFocused((color.A / 255f).ToString(CultureInfo.InvariantCulture));
+            TB_Float_R.Text = color.GetFloatR().ToString(CultureInfo.InvariantCulture);
+            TB_Float_G.Text = color.GetFloatG().ToString(CultureInfo.InvariantCulture);
+            TB_Float_B.Text = color.GetFloatB().ToString(CultureInfo.InvariantCulture);
+            TB_Float_A.Text = color.GetFloatA().ToString(CultureInfo.InvariantCulture);
 
             // Populate HEX textbox
-            TB_HEX.SetTextIfNotFocused(color.ToHex("#"));
+            TB_HEX.Text = color.ToHex("#");
 
             // Populate Int textbox
-            TB_Int.SetTextIfNotFocused(color.ToInt().ToString());
+            TB_Int.Text = color.ToInt().ToString();
 
             // Populate PROG textbox
-            TB_PROG.SetTextIfNotFocused(color.ToHex("0x"));
+            TB_PROG.Text = color.ToHex("0x");
 
             // Populate CDCustomColor
             CDCustomColor.Color = color;

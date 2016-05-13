@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.TBLicense = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PBLogo = new System.Windows.Forms.PictureBox();
             this.LblName = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // TBLicense
             // 
+            this.TBLicense.Cursor = System.Windows.Forms.Cursors.Default;
             this.TBLicense.Location = new System.Drawing.Point(12, 149);
             this.TBLicense.Multiline = true;
             this.TBLicense.Name = "TBLicense";
@@ -46,16 +47,19 @@
             this.TBLicense.Size = new System.Drawing.Size(406, 146);
             this.TBLicense.TabIndex = 0;
             this.TBLicense.TabStop = false;
+            this.TBLicense.Enter += new System.EventHandler(this.TBLicense_Enter);
             // 
-            // pictureBox1
+            // PBLogo
             // 
-            this.pictureBox1.Image = global::Colorize.Properties.Resources.logo_120x120;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.PBLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PBLogo.Image = global::Colorize.Properties.Resources.logo_120x120;
+            this.PBLogo.Location = new System.Drawing.Point(12, 13);
+            this.PBLogo.Name = "PBLogo";
+            this.PBLogo.Size = new System.Drawing.Size(120, 120);
+            this.PBLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PBLogo.TabIndex = 1;
+            this.PBLogo.TabStop = false;
+            this.PBLogo.Click += new System.EventHandler(this.PBLogo_Click);
             // 
             // LblName
             // 
@@ -94,7 +98,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblName);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.PBLogo);
             this.Controls.Add(this.TBLicense);
             this.Font = new System.Drawing.Font("Calibri", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -103,8 +107,9 @@
             this.Name = "FormAbout";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,7 +118,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox TBLicense;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox PBLogo;
         private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.Label LblVersion;
         private System.Windows.Forms.Label label3;

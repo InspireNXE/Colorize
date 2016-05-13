@@ -5,10 +5,11 @@ namespace Colorize
 {
     static class Program
     {
-        public const string Repo = "https://github.com/InspireNXE/Colorize/";
+        public const string Organization = "https://github.com/InspireNXE";
+        public const string Repo = Organization + "/Colorize";
         public const string Issues = Repo + "issues";
-        public const string Donate = "https://www.paypal.me/sdowner";
         public const string Releases = Repo + "releases";
+        public const string Donate = "https://www.paypal.me/sdowner";
 
         /// <summary>
         /// The main entry point for the application.
