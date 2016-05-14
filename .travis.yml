@@ -5,14 +5,14 @@ deploy:
   provider: releases
   api_key:
     secure: K6hR/r6NBVFUjH43GYRqk+Azd0RslClm7fXd9jI/fIOCQFbnpvKVpqyBlZo94MTrb6hpVsO/bymkgGj/B//7TUR5dbYu+TYtvM0dWObzLPSl97wRN/CVqHlEIHqy09Om8TlRbtp1KF8HejSDMh6el6M3n9gGJeYSxsQCvb5rUiA=
-  file: "colorize-b${TRAVIS_BUILD_NUMBER}.exe"
+  file: "./bin/Release/colorize-b${TRAVIS_BUILD_NUMBER}.exe"
   on:
     repo: InspireNXE/Colorize
 notifications:
   email: false
   irc:
     channels:
-      - "irc.esper.net#InspireNXE"
+      - "irc.esper.net#inspirenxe"
     use_notice: true
     skip_join: true
     on_success: change
