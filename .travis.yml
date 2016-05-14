@@ -8,6 +8,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: InspireNXE/Colorize
+    tags: true
 notifications:
   email: false
   irc:
