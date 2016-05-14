@@ -2,12 +2,12 @@ language: csharp
 solution: Colorize.sln
 before_deploy:
   - echo "Renaming Colorize.exe to colorize-b${TRAVIS_BUILD_NUMBER}.exe"
-  - mv ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/Colorize.exe ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/colorize-b${TRAVIS_BUILD_NUMBER}.exe
+  - "mv ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/Colorize.exe ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/colorize-b${TRAVIS_BUILD_NUMBER}.exe"
 deploy:
   provider: releases
   api_key:
     secure: K6hR/r6NBVFUjH43GYRqk+Azd0RslClm7fXd9jI/fIOCQFbnpvKVpqyBlZo94MTrb6hpVsO/bymkgGj/B//7TUR5dbYu+TYtvM0dWObzLPSl97wRN/CVqHlEIHqy09Om8TlRbtp1KF8HejSDMh6el6M3n9gGJeYSxsQCvb5rUiA=
-  file: "${TRAVIS_BUILD_DIR}/Colorize/bin/Release/colorize-b${TRAVIS_BUILD_NUMBER}.exe"
+  file: "colorize-b${TRAVIS_BUILD_NUMBER}.exe"
   on:
     repo: InspireNXE/Colorize
 notifications:
