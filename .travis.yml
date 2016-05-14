@@ -1,6 +1,6 @@
 language: csharp
 solution: Colorize.sln
-before-deploy:
+before_deploy:
   - echo "Renaming Colorize.exe to colorize-b${TRAVIS_BUILD_NUMBER}.exe"
   - mv ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/Colorize.exe ${TRAVIS_BUILD_DIR}/Colorize/bin/Release/colorize-b${TRAVIS_BUILD_NUMBER}.exe
 deploy:
