@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22609.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colorize", "Colorize\Colorize.csproj", "{04C350EF-0230-4354-A587-E78BF640B593}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colorize", "Colorize\Colorize.csproj", "{D69858EE-3F67-4981-944E-9CA4A2559635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04C350EF-0230-4354-A587-E78BF640B593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04C350EF-0230-4354-A587-E78BF640B593}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04C350EF-0230-4354-A587-E78BF640B593}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04C350EF-0230-4354-A587-E78BF640B593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69858EE-3F67-4981-944E-9CA4A2559635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69858EE-3F67-4981-944E-9CA4A2559635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69858EE-3F67-4981-944E-9CA4A2559635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69858EE-3F67-4981-944E-9CA4A2559635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1546195A-1E6B-4142-A10F-12E31FDCA482}
 	EndGlobalSection
 EndGlobal

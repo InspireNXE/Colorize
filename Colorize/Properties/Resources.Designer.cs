@@ -19,7 +19,7 @@ namespace Colorize.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,9 +61,19 @@ namespace Colorize.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon colorize_logo {
+            get {
+                object obj = ResourceManager.GetObject("colorize_logo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The MIT License (MIT)
         ///
-        ///Copyright (c) SpongePowered &lt;https://www.spongepowered.org&gt;
+        ///Copyright (c) InspireNXE &lt;https://www.inspirenxe.org&gt;
         ///Copyright (c) contributors
         ///
         ///Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -71,7 +81,7 @@ namespace Colorize.Properties {
         ///in the Software without restriction, including without limitation the rights
         ///to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
         ///copies of the Software, and to permit persons to whom the Software is
-        ///furnished to do [rest of string was truncated]&quot;;.
+        ///furnished to do so, s [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LICENSE {
             get {
