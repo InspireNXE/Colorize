@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Colorize
 {
     public static class Extensions
     {
+        #region Bitmap
         [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool DeleteObject([In] IntPtr hObject);
+        internal static extern bool DeleteObject([In] IntPtr hObject);
 
-        public static ImageSource AsImageSource(this Bitmap bmp)
+        public static System.Windows.Media.ImageSource AsImageSource(this System.Drawing.Bitmap bmp)
         {
             var handle = bmp.GetHbitmap();
             try
@@ -23,5 +22,6 @@ namespace Colorize
             }
             finally { DeleteObject(handle); }
         }
+        #endregion
     }
 }
