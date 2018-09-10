@@ -3,11 +3,11 @@ using System.Windows;
 
 namespace Colorize
 {
-    internal class OmniColor : Property
+    public class OmniColor : Property
     {
         private static readonly Color DefaultColor = Color.FromArgb(128, 90, 90, 175);
 
-        internal static DependencyProperty MasterColorProperty = RegisterProperty(nameof(MasterColor), DefaultColor);
+        internal static DependencyProperty MasterColorProperty = RegisterProperty(nameof(MasterColor), DefaultColor, typeof(OmniColor));
         public Color MasterColor
         {
             get => (Color) this.GetValue(MasterColorProperty);
@@ -18,28 +18,28 @@ namespace Colorize
             }
         }
 
-        internal static DependencyProperty MediaColorProperty = RegisterProperty(nameof(MediaColor), System.Windows.Media.Color.FromArgb(DefaultColor.A, DefaultColor.R, DefaultColor.G, DefaultColor.B));
+        internal static DependencyProperty MediaColorProperty = RegisterProperty(nameof(MediaColor), System.Windows.Media.Color.FromArgb(DefaultColor.A, DefaultColor.R, DefaultColor.G, DefaultColor.B), typeof(OmniColor));
         public System.Windows.Media.Color MediaColor
         {
             get => (System.Windows.Media.Color) this.GetValue(MediaColorProperty);
             set => this.MasterColor = Color.FromArgb(value.A, value.R, value.G, value.B);
         }
 
-        internal static DependencyProperty ProgrammaticProperty = RegisterProperty(nameof(Programmatic), GetHex("0x", DefaultColor));
+        internal static DependencyProperty ProgrammaticProperty = RegisterProperty(nameof(Programmatic), GetHex("0x", DefaultColor), typeof(OmniColor));
         public string Programmatic
         {
             get => (string) this.GetValue(ProgrammaticProperty);
             set => this.MasterColor = ColorTranslator.FromHtml(value);
         }
 
-        internal static DependencyProperty HexProperty = RegisterProperty(nameof(Hex), GetHex("#", DefaultColor));
+        internal static DependencyProperty HexProperty = RegisterProperty(nameof(Hex), GetHex("#", DefaultColor), typeof(OmniColor));
         public string Hex
         {
             get => (string) this.GetValue(HexProperty);
             set => this.MasterColor = ColorTranslator.FromHtml(value);
         }
 
-        internal static DependencyProperty ArgbProperty = RegisterProperty(nameof(Argb), DefaultColor.ToArgb());
+        internal static DependencyProperty ArgbProperty = RegisterProperty(nameof(Argb), DefaultColor.ToArgb(), typeof(OmniColor));
         public int Argb
         {
             get => (int) this.GetValue(ArgbProperty);
@@ -47,10 +47,10 @@ namespace Colorize
         }
 
         #region Bytes
-        internal static DependencyProperty ByteAProperty = RegisterProperty(nameof(ByteA), DefaultColor.A);
-        internal static DependencyProperty ByteRProperty = RegisterProperty(nameof(ByteR), DefaultColor.R);
-        internal static DependencyProperty ByteGProperty = RegisterProperty(nameof(ByteG), DefaultColor.G);
-        internal static DependencyProperty ByteBProperty = RegisterProperty(nameof(ByteB), DefaultColor.B);
+        internal static DependencyProperty ByteAProperty = RegisterProperty(nameof(ByteA), DefaultColor.A, typeof(OmniColor));
+        internal static DependencyProperty ByteRProperty = RegisterProperty(nameof(ByteR), DefaultColor.R, typeof(OmniColor));
+        internal static DependencyProperty ByteGProperty = RegisterProperty(nameof(ByteG), DefaultColor.G, typeof(OmniColor));
+        internal static DependencyProperty ByteBProperty = RegisterProperty(nameof(ByteB), DefaultColor.B, typeof(OmniColor));
 
         public byte ByteA
         {
@@ -78,10 +78,10 @@ namespace Colorize
         #endregion
 
         #region Floats
-        internal static DependencyProperty FloatAProperty = RegisterProperty(nameof(FloatA), ScaleToFloat(DefaultColor.A));
-        internal static DependencyProperty FloatRProperty = RegisterProperty(nameof(FloatR), ScaleToFloat(DefaultColor.R));
-        internal static DependencyProperty FloatGProperty = RegisterProperty(nameof(FloatG), ScaleToFloat(DefaultColor.G));
-        internal static DependencyProperty FloatBProperty = RegisterProperty(nameof(FloatB), ScaleToFloat(DefaultColor.B));
+        internal static DependencyProperty FloatAProperty = RegisterProperty(nameof(FloatA), ScaleToFloat(DefaultColor.A), typeof(OmniColor));
+        internal static DependencyProperty FloatRProperty = RegisterProperty(nameof(FloatR), ScaleToFloat(DefaultColor.R), typeof(OmniColor));
+        internal static DependencyProperty FloatGProperty = RegisterProperty(nameof(FloatG), ScaleToFloat(DefaultColor.G), typeof(OmniColor));
+        internal static DependencyProperty FloatBProperty = RegisterProperty(nameof(FloatB), ScaleToFloat(DefaultColor.B), typeof(OmniColor));
 
         public float FloatA
         {

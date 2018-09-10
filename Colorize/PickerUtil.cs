@@ -1,110 +1,69 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows.Input;
-using System.Windows.Media;
-using Gma.System.MouseKeyHook;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
+using Color = System.Windows.Media.Color;
+using Point = System.Windows.Point;
 
 namespace Colorize
 {
-    internal static class PickerUtil
+    public static class PickerUtil
     {
-        public static bool IsPicking { get; set; }
-
-        public static Color? LastPickedColor { get; set; }
-
-        private static Action _onClick, _onMove;
-
-        #region Tracking
-        private static IKeyboardMouseEvents _globalMouseHook;
-
-        internal static void StartTracking(Action onClick, Action onMove)
+        #region Capture Screen
+        internal static Bitmap CaptureScreen()
         {
-            if (IsPicking) return;
+            // Capture bitmap of virtual screen to use as a cache
+            var left = SystemInformation.VirtualScreen.Left;
+            var top = SystemInformation.VirtualScreen.Top;
+            var width = SystemInformation.VirtualScreen.Width;
+            var height = SystemInformation.VirtualScreen.Height;
 
-            // Assign actions
-            _onClick = onClick;
-            _onMove = onMove;
+            var bitmap = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.CopyFromScreen(left, top, 0, 0, bitmap.Size);
+            }
 
-            // Mark us as picking
-            IsPicking = true;
-
-            // Set hook
-            _globalMouseHook = Hook.GlobalEvents();
-
-            // Assign event
-            _globalMouseHook.MouseDown += _globalMouseHook_OnMouseDown;
-            _globalMouseHook.MouseMove += _globalMouseHook_OnMouseMove;
-
-            // Override cursor
-            Mouse.OverrideCursor = Cursors.Cross;
-        }
-
-        internal static void StopTracking()
-        {
-            if (!IsPicking) return;
-
-            // Mark us as not picking
-            IsPicking = false;
-
-            // Un-assign event
-            _globalMouseHook.MouseDown -= _globalMouseHook_OnMouseDown;
-            _globalMouseHook.MouseMove -= _globalMouseHook_OnMouseMove;
-
-            // Dispose of hook
-            _globalMouseHook.Dispose();
-
-            // Reset override on cursor
-            Mouse.OverrideCursor = null;
-        }
-
-        private static void _globalMouseHook_OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            // Get the color at the mouse position
-            var (red, green, blue) = GetPixelArgb(e.X, e.Y);
-            LastPickedColor = Color.FromArgb(255, red, green, blue);
-
-            // Invoke our click action if present
-            _onClick?.Invoke();
-
-            // Stop tracking the mouse
-            StopTracking();
-        }
-
-        private static void _globalMouseHook_OnMouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            // Invoke our move action is present
-            _onMove?.Invoke();
+            return bitmap;
         }
         #endregion
 
-        #region Pixel Color
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetDC(IntPtr hwnd);
-
-        [DllImport("user32.dll")]
-        private static extern int ReleaseDC(IntPtr hwnd, IntPtr hdc);
-
-        [DllImport("gdi32.dll")]
-        private static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
-
-        /// <summary>
-        /// Gets the RGB of the pixel at the specified x and y on screen
-        /// </summary>
-        /// <param name="x">The x</param>
-        /// <param name="y">The y</param>
-        /// <returns>The RGB values</returns>
-        internal static (byte red, byte green, byte blue) GetPixelArgb(int x, int y)
+        #region Get Pixel Color
+        internal static Color GetColorAt(Bitmap bitmap, Point point)
         {
-            var hdc = GetDC(IntPtr.Zero);
+            return GetColorAt(bitmap, (int) point.X, (int) point.Y);
+        }
 
-            // Get the pixel at the specified x and y
-            var pixel = GetPixel(hdc, x, y);
+        internal static unsafe Color GetColorAt(Bitmap bitmap, int xPos, int yPos)
+        {
+            var rgb = new byte[] {0, 0, 0};
 
-            ReleaseDC(IntPtr.Zero, hdc);
+            // Lock bits
+            try
+            {
+                var data = bitmap.LockBits(new Rectangle(xPos, yPos, 1, 1), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+                var pt = (byte*)data.Scan0;
+                var bpp = data.Stride / bitmap.Width;
 
-            return (red: (byte) (pixel & 0x000000FF),
-                  green: (byte) ((pixel & 0x0000FF00) >> 8),
-                   blue: (byte) ((pixel & 0x00FF0000) >> 16));
+                for (var y = 0; y < data.Height; y++)
+                {
+                    var row = pt + y * data.Stride;
+
+                    for (var x = 0; x < data.Width; x++)
+                    {
+                        var pixel = row + x * bpp;
+                        // Order: Blue -> Green -> Red -> Alpha (skipped)
+                        for (var bit = 0; bit < bpp - 1; bit++)
+                        {
+                            rgb[bit] = pixel[bit];
+                        }
+                    }
+                }
+                bitmap.UnlockBits(data);
+            }
+            catch (ArgumentException) { }
+
+            return Color.FromArgb(255, rgb[2], rgb[1], rgb[0]);
         }
         #endregion
     }

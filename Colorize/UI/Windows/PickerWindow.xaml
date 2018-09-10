@@ -1,0 +1,96 @@
+﻿<Window x:Class="Colorize.UI.Windows.PickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Colorize.UI.Models"
+        xmlns:converters="clr-namespace:Colorize.UI.Converters"
+        mc:Ignorable="d"
+        Title="Color Picker" Height="450" Width="800">
+
+    <Window.DataContext>
+        <models:PickerViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <converters:BitmapToBitmapImageConverter x:Key="BitmapToBitmapImageConverter"/>
+        <Style x:Key="ImageCrossCursor" TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Cross"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".75*"/>
+            <ColumnDefinition Width=".15*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- The captured image -->
+        <Border Name="CaptureImageBorder" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Margin="4" BorderThickness="1" BorderBrush="DimGray" ClipToBounds="True">
+            <Image Name="CaptureImage" Source="{Binding Path=CurrentBitmap, Converter={StaticResource BitmapToBitmapImageConverter}}"
+                   Opacity="1" RenderTransformOrigin="0.5,0.5" PreviewMouseMove="CaptureImage_OnPreviewMouseMove" Style="{StaticResource ImageCrossCursor}"/>
+        </Border>
+
+        <!-- Hovered Color -->
+        <Border Name="BorderHoveredColor" Margin="4,4,2,4" Grid.Column="0" Grid.Row="1" BorderThickness="1" BorderBrush="DimGray">
+            <Grid>
+                <!-- Checkered background -->
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <DrawingBrush TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing Geometry="M0,0 H16 V16 H32 V32 H16 V16 H0Z" Brush="LightGray"/>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Rectangle Name="RectHoveredColor">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{Binding HoveredColor}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Border>
+
+        <!-- Current Color -->
+        <Border Name="BorderPickedColor" Margin="2,4,2,4" Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="DimGray">
+            <Grid>
+                <!-- Checkered background -->
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <DrawingBrush TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing Geometry="M0,0 H16 V16 H32 V32 H16 V16 H0Z" Brush="LightGray"/>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Rectangle Name="RectPickedColor">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{Binding PickedColor}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Border>
+
+        <!-- Zoom Slider -->
+        <Slider Name="SliderZoomFactor" Value="{Binding ZoomFactor}" Grid.Column="3" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Right" Margin="4"
+                IsMoveToPointEnabled="True" TickPlacement="TopLeft" TickFrequency="0.25" Maximum="15" ValueChanged="SliderZoomFactor_OnValueChanged"/>
+
+        <!-- OK button -->
+        <Button Content="OK" Width="60" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="4" HorizontalAlignment="Left" Click="BtnOK_OnClick"/>
+    </Grid>
+</Window>

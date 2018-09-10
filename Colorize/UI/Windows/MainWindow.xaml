@@ -3,11 +3,226 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Colorize"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:pages="clr-namespace:Colorize.UI.Pages"
+        xmlns:models="clr-namespace:Colorize.UI.Models"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
         Title="Colorize" Height="275" Width="435" ResizeMode="CanMinimize">
 
-    <pages:MainPage/>
+    <Window.DataContext>
+        <models:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="GroupBoxStyleSquaredCorners" TargetType="{x:Type GroupBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupBox}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="6"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="0"/>
+                            <Border Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                                <Border.OpacityMask>
+                                    <MultiBinding ConverterParameter="7">
+                                        <MultiBinding.Converter>
+                                            <BorderGapMaskConverter />
+                                        </MultiBinding.Converter>
+                                        <Binding ElementName="Header" Path="ActualWidth"/>
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                    </MultiBinding>
+                                </Border.OpacityMask>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                                    <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"/>
+                                </Border>
+                            </Border>
+                            <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2" Background="Transparent" BorderBrush="Transparent" CornerRadius="2" BorderThickness="1">
+                                <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                            <ContentPresenter Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.65*"/>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.65*"/>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.45*"/>
+            <ColumnDefinition Width="0.20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Menu Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="0" Height="20" Background="Snow" IsTabStop="False">
+            <MenuItem Header="File" IsTabStop="False">
+                <MenuItem Header="_Exit" Click="MIFileExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help" IsTabStop="False">
+                <MenuItem Header="_Issues" Click="MIHelpIssues_Click"/>
+                <MenuItem Header="_Releases" Click="MIHelpReleases_Click"/>
+                <MenuItem Header="_Source" Click="MIHelpSource_Click"/>
+                <MenuItem Header="_Donate" Click="MIHelpDonate_Click"/>
+                <MenuItem Header="_About" Click="MIHelpAbout_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- RGB (Byte) -->
+        <GroupBox Margin="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource GroupBoxStyleSquaredCorners}">
+            <GroupBox.Header>RGB (Byte)</GroupBox.Header>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="A" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderByteAlpha" Orientation="Vertical" TickFrequency="1" IsSnapToTickEnabled="True" Grid.Column="0" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBByteAlpha, Path=Text}" Maximum="255" ValueChanged="SliderAlphaByte_OnValueChanged" TabIndex="1" IsMoveToPointEnabled="True"
+                        Tag=""/>
+                <TextBox Name="TBByteAlpha" Text="{Binding CurrentColor.ByteA}" Grid.Column="0" Grid.Row="2" Margin="2,4,2,4" MaxLength="3"
+                         PreviewTextInput="TBByte_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="5"/>
+
+                <TextBlock Text="R" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderByteRed" Orientation="Vertical" TickFrequency="1" IsSnapToTickEnabled="True" Grid.Column="1" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBByteRed, Path=Text}" Maximum="255" ValueChanged="SliderRedByte_OnValueChanged" TabIndex="2" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBByteRed" Text="{Binding CurrentColor.ByteR}" Grid.Column="1" Grid.Row="2" Margin="2,4,2,4" MaxLength="3"
+                         PreviewTextInput="TBByte_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="6"/>
+
+                <TextBlock Text="G" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderByteGreen" Orientation="Vertical" TickFrequency="1" IsSnapToTickEnabled="True" Grid.Column="2" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBByteGreen, Path=Text}" Maximum="255" ValueChanged="SliderGreenByte_OnValueChanged" TabIndex="3" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBByteGreen" Text="{Binding CurrentColor.ByteG}" Grid.Column="2" Grid.Row="2" Margin="2,4,2,4" MaxLength="3"
+                         PreviewTextInput="TBByte_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="7"/>
+
+                <TextBlock Text="B" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderByteBlue" Orientation="Vertical" TickFrequency="1" IsSnapToTickEnabled="True" Grid.Column="3" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBByteBlue, Path=Text}" Maximum="255" ValueChanged="SliderBlueByte_OnValueChanged" TabIndex="4" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBByteBlue" Text="{Binding CurrentColor.ByteB}" Grid.Column="3" Grid.Row="2" Margin="2,4,2,4" MaxLength="3"
+                         PreviewTextInput="TBByte_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="8"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- RGB (Float) -->
+        <GroupBox Margin="4" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Style="{StaticResource GroupBoxStyleSquaredCorners}">
+            <GroupBox.Header>RGB (Float)</GroupBox.Header>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="A" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderFloatAlpha" Orientation="Vertical" TickFrequency="0.0000001" IsSnapToTickEnabled="True" Grid.Column="0" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBFloatAlpha, Path=Text}" Maximum="1" ValueChanged="SliderAlphaFloat_OnValueChanged" TabIndex="9" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBFloatAlpha" Text="{Binding CurrentColor.FloatA}" Grid.Column="0" Grid.Row="2" Margin="2,4,2,4" MaxLength="9"
+                         PreviewTextInput="TBFloat_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="13"/>
+
+                <TextBlock Text="R" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderFloatRed" Orientation="Vertical" TickFrequency="0.0000001" IsSnapToTickEnabled="True" Grid.Column="1" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBFloatRed, Path=Text}" Maximum="1" ValueChanged="SliderRedFloat_OnValueChanged" TabIndex="10" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBFloatRed" Text="{Binding CurrentColor.FloatR}" Grid.Column="1" Grid.Row="2" Margin="2,4,2,4" MaxLength="9"
+                         PreviewTextInput="TBFloat_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="14"/>
+
+                <TextBlock Text="G" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderFloatGreen" Orientation="Vertical" TickFrequency="0.0000001" IsSnapToTickEnabled="True" Grid.Column="2" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBFloatGreen, Path=Text}" Maximum="1" ValueChanged="SliderGreenFloat_OnValueChanged" TabIndex="11" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBFloatGreen" Text="{Binding CurrentColor.FloatG}" Grid.Column="2" Grid.Row="2" Margin="2,4,2,4" MaxLength="9"
+                         PreviewTextInput="TBFloat_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="15"/>
+
+                <TextBlock Text="B" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Slider Name="SliderFloatBlue" Orientation="Vertical" TickFrequency="0.0000001" IsSnapToTickEnabled="True" Grid.Column="3" Grid.Row="1" Margin="0,0,0,4" HorizontalAlignment="Center"
+                        Value="{Binding ElementName=TBFloatBlue, Path=Text}" Maximum="1" ValueChanged="SliderBlueFloat_OnValueChanged" TabIndex="12" IsMoveToPointEnabled="True"/>
+                <TextBox Name="TBFloatBlue" Text="{Binding CurrentColor.FloatB}" Grid.Column="3" Grid.Row="2" Margin="2,4,2,4" MaxLength="9"
+                         PreviewTextInput="TBFloat_PreviewTextInput" PreviewKeyDown="TB_OnPreviewKeyDown" TabIndex="16"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- HEX -->
+        <TextBlock Text="HEX" Grid.Column="0" Grid.Row="2" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding CurrentColor.Hex}" Margin="4" Grid.Column="1" Grid.Row="2" TabIndex="17"
+                 LostFocus="TBHex_OnLostFocus" PreviewTextInput="TBHex_OnPreviewTextInput" PreviewKeyDown="TBHex_OnPreviewKeyDown" Width="85"/>
+
+        <!-- Argb -->
+        <TextBlock Text="ARGB" Grid.Column="2" Grid.Row="2" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding CurrentColor.Argb}" Margin="4" Grid.Column="3" Grid.Row="2" TabIndex="18"
+                 LostFocus="TBArgb_OnLostFocus" PreviewTextInput="TBArgb_OnPreviewTextInput" PreviewKeyDown="TBArgb_OnPreviewKeyDown" Width="85"/>
+
+        <!-- PROG (0x) -->
+        <TextBlock Text="PROG" Grid.Column="4" Grid.Row="2" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding CurrentColor.Programmatic}" Margin="4" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" TabIndex="19"
+                 LostFocus="TBProg_OnLostFocus" PreviewTextInput="TBProg_OnPreviewTextInput" PreviewKeyDown="TBProg_OnPreviewKeyDown" Width="85"/>
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="3" Orientation="Horizontal">
+
+            <!-- Current Color -->
+            <Border Name="BorderCurrentColor" Width="396" Margin="4,4,0,4" BorderThickness="1" BorderBrush="DimGray">
+                <Grid>
+                    <!-- Checkered background -->
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <DrawingBrush TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
+                                <DrawingBrush.Drawing>
+                                    <GeometryDrawing Geometry="M0,0 H16 V16 H32 V32 H16 V16 H0Z" Brush="LightGray"/>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <Rectangle Name="RectCurrentColor">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{Binding CurrentColor.MediaColor}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Grid>
+            </Border>
+
+            <!-- Pick Button -->
+            <Button Name="BtnPicker" Margin="1,4,4,4" Width="Auto" HorizontalAlignment="Left" Click="BtnColorPick_OnClick" TabIndex="20">
+                <Button.Content>
+                    <fa5:SvgAwesome Icon="Solid_EyeDropper" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button.Content>
+                <Button.ToolTip>
+                    <TextBlock Text="Pick a color from an image"/>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+    </Grid>
 </Window>

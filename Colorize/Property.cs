@@ -1,10 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
-using Colorize.UI.Pages;
 
 namespace Colorize
 {
-    internal class Property : DependencyObject, INotifyPropertyChanged
+    public class Property : DependencyObject, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         internal void UpdateProperty(DependencyProperty property, object value)
@@ -13,14 +13,9 @@ namespace Colorize
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property.Name));
         }
 
-        internal static DependencyProperty RegisterProperty<T>(string name)
+        internal static DependencyProperty RegisterProperty<T>(string name, T defaultValue, Type registrar)
         {
-            return DependencyProperty.Register(name, typeof(T), typeof(MainPage));
-        }
-
-        internal static DependencyProperty RegisterProperty<T>(string name, T defaultValue)
-        {
-            return DependencyProperty.Register(name, typeof(T), typeof(MainPage), new UIPropertyMetadata(defaultValue));
+            return DependencyProperty.Register(name, typeof(T), registrar, new UIPropertyMetadata(defaultValue));
         }
     }
 }

@@ -23,5 +23,77 @@ namespace Colorize
             finally { DeleteObject(handle); }
         }
         #endregion
+
+        #region Math
+        /// <summary>
+        /// Squishes a value to fit within the provided range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The minimum value</param>
+        /// <param name="max">The maximum value</param>
+        /// <returns>The valued squished to fit within the specified range</returns>
+        public static sbyte Squish(this sbyte value, sbyte min, sbyte max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+
+        /// <summary>
+        /// Squishes a value to fit within the provided range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The minimum value</param>
+        /// <param name="max">The maximum value</param>
+        /// <returns>The valued squished to fit within the specified range</returns>
+        public static decimal Squish(this decimal value, decimal min, decimal max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+
+        /// <summary>
+        /// Squishes a value to fit within the provided range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The minimum value</param>
+        /// <param name="max">The maximum value</param>
+        /// <returns>The valued squished to fit within the specified range</returns>
+        public static double Squish(this double value, double min, double max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+
+        /// <summary>
+        /// Squishes a value to fit within the provided range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The minimum value</param>
+        /// <param name="max">The maximum value</param>
+        /// <returns>The valued squished to fit within the specified range</returns>
+        public static float Squish(this float value, float min, float max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+
+        /// <summary>
+        /// Squishes a value to fit within the provided range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The minimum value</param>
+        /// <param name="max">The maximum value</param>
+        /// <returns>The valued squished to fit within the specified range</returns>
+        public static int Squish(this int value, int min, int max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+        #endregion
     }
 }

@@ -2,10 +2,9 @@
 
 namespace Colorize.UI.Models
 {
-    internal class MainViewModel : Property
+    public class MainViewModel : Property
     {
-
-        internal static DependencyProperty CurrentColorProperty = RegisterProperty<OmniColor>(nameof(CurrentColor));
+        internal static DependencyProperty CurrentColorProperty = RegisterProperty<OmniColor>(nameof(CurrentColor), null, typeof(MainViewModel));
         public OmniColor CurrentColor
         {
             get => (OmniColor) this.GetValue(CurrentColorProperty);
